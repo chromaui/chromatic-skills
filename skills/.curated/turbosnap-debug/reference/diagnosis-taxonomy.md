@@ -15,7 +15,7 @@ Choose one primary code. Mention secondary factors in the evidence or unresolved
 
 | Code | Raw repo cues | Meaning | Default next move |
 | --- | --- | --- | --- |
-| `TS_BAIL_MISSING_STATS` | `missingStatsFile`, “Did not find preview-stats.json” | Storybook was built without the required stats artifact. | Verify the build command uses `--stats-json` or `--webpack-stats-json` and confirm the built output contains the stats file. |
+| `TS_BAIL_MISSING_STATS` | `missingStatsFile`, “Did not find preview-stats.json” | Storybook was built without the required stats artifact. | Verify the build command uses `--stats-json` or `--webpack-stats-json`. If a rerun is possible, prefer `uploadMetadata` so the hosted `.chromatic/preview-stats.trimmed.json` URL can be shared directly. |
 | `TS_BAIL_INVALID_GIT_HISTORY` | `invalidChangedFiles`, “missing git history” | TurboSnap could not compute changed files from baseline commits. | Inspect checkout depth, merge-commit behavior, rebases, and CI git settings. |
 | `TS_BAIL_NO_ANCESTOR_BUILD` | `noAncestorBuild` | There is no usable ancestor baseline build. | Confirm baseline build availability and whether the branch has a usable history. |
 | `TS_BAIL_REBUILD` | `rebuild` | This is a rebuild, so TurboSnap is intentionally disabled for the run. | Explain current build behavior and focus on restoring TurboSnap on the next non-rebuild run. |
@@ -30,7 +30,7 @@ Choose one primary code. Mention secondary factors in the evidence or unresolved
 | --- | --- | --- | --- |
 | `TS_ACTIVE_EXPECTED` | TurboSnap is enabled and the trace behavior matches the reported outcome. | “TurboSnap enabled”, sensible affected story files, no trust issue in the report. | Explain why the selected stories are expected and point to the key evidence. |
 | `TS_ACTIVE_NO_AFFECTED_STORIES` | TurboSnap is enabled and found no affected stories. | Enabled output plus empty or near-empty trace result. | Validate the changed files and trace output before treating this as a bug. |
-| `TS_ACTIVE_TOO_BROAD` | TurboSnap is enabled, but the user believes too many stories were retested. | Trace reaches many shared files, preview/config churn, broad dependency ripples, or bad base/config dir setup. | Trace the widest dependency edge and look for shared imports, preview usage, directory mismatch, or externals overreach. |
+| `TS_ACTIVE_TOO_BROAD` | TurboSnap is enabled, but the user believes too many stories were retested. | Trace reaches many shared files, preview/config churn, broad dependency ripples, or bad base/config dir setup. | Prefer a hosted metadata URL or local stats artifact, then trace the widest dependency edge and look for shared imports, preview usage, directory mismatch, or externals overreach. |
 | `TS_ACTIVE_MISSED_EXPECTED_STORY` | TurboSnap is enabled, but the user believes a story that should have run was skipped. | Trace output does not include an expected story or the changed file was filtered out. | Verify the changed file list, stats coverage, dynamic imports, untraced globs, and path normalization. |
 
 ## Configuration and path problems

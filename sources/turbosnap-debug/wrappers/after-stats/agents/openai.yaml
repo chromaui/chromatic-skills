@@ -1,0 +1,4 @@
+interface:
+  display_name: "TurboSnap Debug After Stats"
+  short_description: "Validate and minimize TurboSnap fixes once stats are available"
+  default_prompt: "Use $turbosnap-debug-after-stats to validate this TurboSnap issue after stats are available and return the minimal technical fix, safer recommendation, and coverage risk."

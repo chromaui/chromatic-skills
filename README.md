@@ -1,24 +1,48 @@
 # Chromatic Skills
 
-Installable Codex skills for Chromatic support, Solutions Engineering, and customer self-serve workflows.
+Canonical TurboSnap workflows and prompt adapters for Chromatic support, Solutions Engineering, and customer self-serve debugging.
 
 ## Repository Layout
 
 ```text
+sources/
+  turbosnap-debug/
+    core/
+    wrappers/
+prompts/
+  claude-code/
+  copilot/
+  generic/
+docs/
 skills/
   .curated/
-    turbosnap-debug/
-    turbosnap-debug-internal/
-    turbosnap-debug-customer/
-    turbosnap-debug-after-stats/
   .experimental/
 scripts/
 .github/workflows/
 ```
 
-Each skill directory is self-contained and installable on its own.
+## Authoring Model
 
-## Included Skills
+- `sources/turbosnap-debug/**` is the canonical authored source.
+- `skills/.curated/**` contains generated self-contained Codex/OpenAI installables.
+- `prompts/**` contains generated prompt adapters for Claude Code, Copilot, and generic chat/editor usage.
+- `docs/**` explains hosted metadata and usage by tool.
+
+Do not edit `skills/.curated/**` directly unless you are intentionally changing generated output as part of the build process.
+
+## Hosted Metadata
+
+When a TurboSnap investigation reaches the stats or trace stage, prefer hosted metadata when it is available.
+
+Preferred artifact:
+- `<storybookUrl>.chromatic/preview-stats.trimmed.json`
+
+Fallback discovery URL:
+- `<storybookUrl>.chromatic/`
+
+See `docs/metadata-artifacts.md` for enablement, URL patterns, and local trace fallback.
+
+## Included Codex Skills
 
 - `turbosnap-debug`
   Shared TurboSnap diagnosis core, taxonomy, workflow, and references.
@@ -27,36 +51,32 @@ Each skill directory is self-contained and installable on its own.
 - `turbosnap-debug-customer`
   Customer-safe wrapper for step-by-step self-serve debugging.
 - `turbosnap-debug-after-stats`
-  Internal wrapper for validation and minimization after a stats file and changed files are available.
+  Internal wrapper for validation and minimization after a stats artifact and changed files are available.
+
+## Tool Usage
+
+Codex:
+- install from `skills/.curated/<skill-name>` or the indexed `npx skills add chromaui/chromatic-skills@<skill-name>` flow
+- see `docs/usage-codex.md`
+
+Claude Code:
+- use the prompt pack under `prompts/claude-code/`
+- see `docs/usage-claude-code.md`
+
+Copilot and VS Code-hosted workflows:
+- use `prompts/copilot/` or the generic snippets under `prompts/generic/`
+- see `docs/usage-copilot.md`
 
 ## Development Workflow
 
-1. Update the shared core in `skills/.curated/turbosnap-debug`.
-2. Run `./scripts/sync-turbosnap-wrappers.sh` to refresh wrapper references and examples.
-3. Run `./scripts/validate-skills.sh`.
-4. Commit the synchronized result.
-
-## Installation
-
-The exact install command depends on the distribution channel you use.
-
-If this repo is indexed by the Skills CLI, the install shape should be:
-
-```bash
-npx skills add <owner>/chromatic-skills@turbosnap-debug
-npx skills add <owner>/chromatic-skills@turbosnap-debug-internal
-npx skills add <owner>/chromatic-skills@turbosnap-debug-customer
-npx skills add <owner>/chromatic-skills@turbosnap-debug-after-stats
-```
-
-If you are using a GitHub path-based installer, install from:
-
-```text
-skills/.curated/<skill-name>
-```
+1. Edit the canonical source in `sources/turbosnap-debug`.
+2. Run `./scripts/sync-turbosnap-wrappers.sh`.
+3. Run `./scripts/build-prompt-adapters.sh`.
+4. Run `./scripts/validate-skills.sh`.
+5. Commit both source and generated output.
 
 ## Publishing Notes
 
-- Keep stable skills in `skills/.curated/`.
+- Keep stable installable skills in `skills/.curated/`.
 - Put trial workflows in `skills/.experimental/`.
 - Wrapper skills must remain self-contained because many installers copy one skill directory at a time.

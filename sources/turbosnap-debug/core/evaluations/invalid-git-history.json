@@ -1,0 +1,19 @@
+{
+  "name": "Missing git history prevents changed-file detection",
+  "skills": ["turbosnap-debug-internal"],
+  "query": "Investigate this TurboSnap case and give me something I can send back to the customer.",
+  "context": "CLI output includes 'TurboSnap disabled due to missing git history' and says it could not retrieve changed files since baseline commits. The customer mentioned a rebase and a shallow CI checkout.",
+  "expected_behavior": [
+    "Chooses `TS_BAIL_INVALID_GIT_HISTORY`",
+    "Explains that the current run cannot compute changed files accurately",
+    "Calls out the rebase or shallow checkout as supporting evidence",
+    "Recommends a git-history or CI-checkout fix before tracing anything deeper",
+    "Includes a customer-safe explanation and a single next artifact or change to request"
+  ],
+  "success_criteria": [
+    "Diagnosis code is `TS_BAIL_INVALID_GIT_HISTORY`",
+    "The internal output includes both the raw diagnosis card and customer-safe explanation",
+    "The recommended next step focuses on git history, not Storybook config",
+    "The response does not hide that TurboSnap is disabled for the current build"
+  ]
+}

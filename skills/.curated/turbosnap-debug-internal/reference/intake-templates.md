@@ -28,7 +28,9 @@ Current message: <exact warning or error>
 Chromatic command: <exact command or action step>
 Storybook build command: <exact command>
 Build URL: <optional>
-Stats file path: <optional>
+Hosted metadata URL: <optional direct .chromatic/preview-stats.trimmed.json URL>
+Hosted metadata directory: <optional .chromatic/ directory URL>
+Stats file path: <optional local path>
 Changed files: <optional>
 Trace output: <optional>
 storybookBaseDir: <optional>
@@ -49,6 +51,7 @@ Known evidence:
 - CLI output or warning: <paste>
 - Exact Chromatic command or GitHub Action step: <paste>
 - Storybook build command: <paste if known>
+- Hosted metadata URL: <paste if available>
 - Repo layout / base dir / config dir: <paste if known>
 - Changed files: <paste if known>
 
@@ -56,6 +59,7 @@ Instructions:
 - Classify first.
 - If evidence is enough, stop and return the diagnosis card plus a customer-safe explanation.
 - If evidence is not enough, ask for exactly one next artifact.
+- If stats are needed and hosted metadata exists, prefer the direct `.chromatic/preview-stats.trimmed.json` URL over a local file path.
 ```
 
 ## Internal After-Stats Prompt
@@ -64,11 +68,11 @@ Instructions:
 Use turbosnap-debug in internal-after-stats mode.
 
 Goal:
-Use the provided stats file and changed files to determine the smallest technically valid change that removes the current bail reason.
+Use the provided stats artifact and changed files to determine the smallest technically valid change that removes the current bail reason.
 
 Inputs:
 - Diagnosis so far: <code or summary>
-- Stats file path: <path>
+- Hosted metadata URL or local stats path: <direct .chromatic/preview-stats.trimmed.json URL or local path>
 - Changed files: <paste list>
 - Trace output: <paste if already run>
 - Storybook base dir / config dir: <paste if non-default>
@@ -96,6 +100,7 @@ Proposed fix:
 Evidence:
 - Trace output before: <paste>
 - Trace output after: <paste>
+- Hosted metadata URL or local stats path: <paste>
 
 Instructions:
 - Say whether the fix removes the bail.
@@ -116,6 +121,7 @@ My setup:
 - Chromatic command: <paste>
 - Storybook build command: <paste>
 - Monorepo or single package: <say which>
+- Hosted metadata URL: <paste if you already enabled uploadMetadata>
 
 Please ask me for one artifact at a time and explain exactly what command to run next.
 ```
@@ -129,7 +135,7 @@ Known issue:
 - TurboSnap is enabled, but the build says: <paste exact bail message>
 
 Available artifact:
-- Stats file path: <path>
+- Hosted metadata URL or stats file path: <path or URL>
 
 Please tell me the next single trace command to run and what result you need from it.
 ```
@@ -144,10 +150,28 @@ Request exact invocation:
 Please share the exact command that runs Chromatic, including the package script or GitHub Action step if that is where it lives.
 ```
 
-Request stats confirmation:
+Request hosted metadata upload:
 
 ```text
-Please confirm whether your built Storybook output contains a `preview-stats.json` file, and share its path if it does.
+If you can rerun the build, please enable `uploadMetadata: true` for that run so Chromatic publishes a `.chromatic/` metadata directory alongside the hosted Storybook.
+```
+
+Request hosted stats URL:
+
+```text
+Please share the direct URL to `.chromatic/preview-stats.trimmed.json` from the published Storybook. If you only have the `.chromatic/` directory URL, share that instead.
+```
+
+Request hosted metadata directory:
+
+```text
+Please share the `.chromatic/` directory URL from the published Storybook so we can locate the uploaded metadata files.
+```
+
+Request local stats confirmation:
+
+```text
+If hosted metadata is not available, please confirm whether your built Storybook output contains a `preview-stats.json` file, and share its path if it does.
 ```
 
 Request one trace:

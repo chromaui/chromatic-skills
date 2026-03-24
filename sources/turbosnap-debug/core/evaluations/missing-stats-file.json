@@ -1,0 +1,21 @@
+{
+  "name": "Missing preview-stats file disables TurboSnap",
+  "skills": ["turbosnap-debug"],
+  "query": "TurboSnap is turned on, but the build says it was disabled because preview-stats.json was missing after our Storybook build change.",
+  "context": "Chromatic output includes 'TurboSnap disabled due to missing stats file' and 'Did not find preview-stats.json in your built Storybook'. The user confirms they recently changed the Storybook build command.",
+  "expected_behavior": [
+    "Chooses `TS_BAIL_MISSING_STATS` as the primary diagnosis code",
+    "Sets TurboSnap state to disabled for the current build",
+    "Uses the missing stats message as primary evidence",
+    "Explains that TurboSnap cannot run again until the stats artifact is restored",
+    "Recommends verifying the Storybook build command uses `--stats-json` or `--webpack-stats-json`",
+    "May link the setup docs because the issue is directly about TurboSnap setup"
+  ],
+  "success_criteria": [
+    "Diagnosis code is `TS_BAIL_MISSING_STATS`",
+    "Confidence is high",
+    "The next step focuses on restoring the stats file rather than disabling TurboSnap permanently",
+    "The response names the missing `preview-stats.json` artifact explicitly",
+    "If docs are linked, they are the setup docs"
+  ]
+}

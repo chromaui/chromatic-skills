@@ -10,6 +10,7 @@ Start with any of:
 - Storybook build command
 - `chromatic trace` output
 - changed-file list
+- hosted metadata URL from the published Storybook
 - screenshots or customer description
 
 If Tier 0 cleanly maps to a diagnosis code, stop there.
@@ -36,20 +37,23 @@ When a hard bail is already known:
 ## Tier 2: Trace and path proof
 
 Request one of these when the problem is about affected stories or path alignment:
+- the direct hosted metadata URL for `.chromatic/preview-stats.trimmed.json`
+- the hosted `.chromatic/` directory URL if the direct JSON URL is unknown
 - `--trace-changed=expanded` output from a recent run
 - output from `npx chromatic trace ...`
 - the list of changed files relative to repo root
-- the path to `preview-stats.json`
+- the local path to `preview-stats.json` or `preview-stats.trimmed.json`
 - the location of `.storybook` or alternate config dir
 
 Customer prompt:
-> Please run the next targeted command and paste the output exactly as shown.
+> If you can rerun the build with `uploadMetadata: true`, please share the direct URL to `.chromatic/preview-stats.trimmed.json`. If you only have the `.chromatic/` directory URL, share that and we can use it to find the file.
 
 Internal prompt:
-> Prefer one targeted trace over a broad artifact request. Use the changed file with the highest leverage.
+> Prefer one hosted or local stats artifact plus one targeted trace over a broad artifact request. Use the changed file with the highest leverage.
 
 If the hard bail is already identified and the goal is to restore TurboSnap:
-- request the stats file path and the changed files list
+- request the hosted stats URL first when it is available
+- otherwise request the local stats file path and the changed files list
 - then ask for one targeted trace or run one internally
 
 ## Tier 3: Shared-dependency and filtering proof

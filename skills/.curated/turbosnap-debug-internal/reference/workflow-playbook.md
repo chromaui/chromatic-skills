@@ -6,9 +6,10 @@ Use this workflow to match how TurboSnap cases are usually handled in support.
 
 1. classify the current build state
 2. request the smallest next artifact
-3. if stats are available, run targeted trace
-4. if the goal is to restore TurboSnap, minimize the fix path
-5. return a diagnosis card and customer-safe next step
+3. if stats are needed, prefer a hosted metadata URL when available
+4. if stats are available, run targeted trace
+5. if the goal is to restore TurboSnap, minimize the fix path
+6. return a diagnosis card and customer-safe next step
 
 ## Phase A: Classify The Build State
 
@@ -19,6 +20,7 @@ Start with the evidence already present:
 - exact Chromatic command
 - Storybook build command
 - changed files if already known
+- hosted metadata URL if the build already published `.chromatic/` artifacts
 
 Choose one primary diagnosis code before you ask for more.
 
@@ -34,22 +36,26 @@ Ask for one artifact only.
 Preferred order:
 - exact Chromatic command or GitHub Action step
 - Storybook build command
-- confirmation that `preview-stats.json` exists
-- stats file path
+- hosted metadata URL for `.chromatic/preview-stats.trimmed.json`
+- hosted `.chromatic/` directory URL when the direct JSON URL is unknown
+- confirmation that `preview-stats.json` exists locally
+- local stats file path
 - changed files list
 - one targeted `chromatic trace` output
 
-Do not ask for the stats file until the case has reached the point where tracing will help.
+Use hosted metadata only when the workflow has reached a stats or trace stage.
+Do not front-load `uploadMetadata` during basic classification when the issue is already proven by logs.
 
 ## Phase C: Trace And Minimize
 
 Only enter this phase when at least one of these is true:
 - the bail reason is already known and the goal is to restore TurboSnap
-- the customer shared a stats file and changed files
+- the customer shared a stats file, a hosted metadata URL, and changed files
 - a prior trace already showed the broad or missed path that needs explanation
 
 In this phase:
 - validate the bail or active trace with `chromatic trace`
+- if the only stats artifact is hosted, download `.chromatic/preview-stats.trimmed.json` locally before running CLI trace
 - if the issue is a preview/config bail, use `reference/trace-minimization.md`
 - separate the minimal technical fix from the safer recommended fix
 
@@ -68,6 +74,7 @@ For customer-facing output:
 - explain the diagnosis before linking docs
 - avoid internal field names unless the customer already used them
 - ask for one next artifact at a time
+- if hosted metadata is the fastest path, ask for the direct JSON URL first and the directory URL second
 
 ## Mode Guidance
 
@@ -84,6 +91,7 @@ Default posture:
 - validate the graph behavior
 - minimize the fix path if the goal is to remove a bail
 - call out coverage risk when suggesting `--untraced` or `--externals`
+- treat hosted metadata URLs as valid stats evidence once the file is downloaded or directly inspectable
 
 ### Customer guided
 
@@ -91,3 +99,4 @@ Default posture:
 - translate findings into plain language
 - give one exact command to run next
 - avoid advanced flags unless the evidence points there
+- introduce `uploadMetadata` only when it unlocks the next useful artifact

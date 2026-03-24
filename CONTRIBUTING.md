@@ -2,21 +2,24 @@
 
 ## Principles
 
-- Keep the shared workflow and references in `skills/.curated/turbosnap-debug`.
-- Keep wrapper skills thin and self-contained.
+- Keep the shared workflow and references in `sources/turbosnap-debug/core`.
+- Keep wrapper source files thin in `sources/turbosnap-debug/wrappers`.
+- Keep generated Codex skills self-contained in `skills/.curated`.
 - Ask for one artifact at a time in customer-facing flows.
+- Prefer hosted metadata URLs once the workflow reaches a stats or trace stage.
 - Separate the minimal technical fix from the safer recommended fix whenever `--untraced` or similar suppression is involved.
 
 ## Updating TurboSnap Skills
 
-1. Update the core skill.
+1. Edit `sources/turbosnap-debug/**`.
 2. Run `./scripts/sync-turbosnap-wrappers.sh`.
-3. Run `./scripts/validate-skills.sh`.
-4. Review the wrapper diffs before committing.
+3. Run `./scripts/build-prompt-adapters.sh`.
+4. Run `./scripts/validate-skills.sh`.
+5. Review the generated diffs in `skills/.curated/**` and `prompts/**` before committing.
 
 ## Adding A New Skill
 
-1. Create a new skill folder under `skills/.curated/` or `skills/.experimental/`.
-2. Include `SKILL.md` and usually `agents/openai.yaml`.
-3. Keep the skill self-contained.
-4. Add it to the README once it is ready to share.
+1. Add canonical source content first.
+2. Decide whether the skill needs generated Codex installables, prompt adapters, or both.
+3. Keep installable skill outputs self-contained.
+4. Add README and usage docs once the skill is ready to share.

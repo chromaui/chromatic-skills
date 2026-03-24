@@ -9,7 +9,7 @@ Do not front-load advanced TurboSnap flags if the existing evidence already iden
 Use these to confirm whether TurboSnap is actually enabled:
 
 ```bash
-rg -n '"(scripts|chromatic)|onlyChanged|--only-changed|storybookBaseDir|storybookConfigDir|externals|untraced"' chromatic.config.json package.json .github/workflows .
+rg -n '"(scripts|chromatic)|onlyChanged|--only-changed|storybookBaseDir|storybookConfigDir|externals|untraced|uploadMetadata"' chromatic.config.json package.json .github/workflows .
 ```
 
 Use this when the user thinks TurboSnap is on, but the config is unclear.
@@ -19,9 +19,29 @@ When both are present:
 - inspect `chromatic.config.json` for defaults and shared options
 - do not assume all TurboSnap flags live in only one place
 
+## Hosted metadata intake
+
+Use hosted metadata when the workflow has already reached a stats or trace stage and the build published `.chromatic/` artifacts.
+
+Ask for one of these first:
+- direct hosted stats URL: `<storybookUrl>.chromatic/preview-stats.trimmed.json`
+- hosted metadata directory URL: `<storybookUrl>.chromatic/`
+
+If the user needs a download step before running `chromatic trace` locally:
+
+```bash
+curl -fsSL '<storybook-url>.chromatic/preview-stats.trimmed.json' -o /tmp/preview-stats.trimmed.json
+```
+
+Use hosted metadata for:
+- `TS_BAIL_MISSING_STATS` follow-up when a rerun is possible
+- `TS_ACTIVE_TOO_BROAD`
+- `TS_ACTIVE_MISSED_EXPECTED_STORY`
+- preview/config bail minimization after a hosted build is already available
+
 ## Stats file checks
 
-Use these to confirm the required stats artifact exists:
+Use these to confirm the required local stats artifact exists:
 
 ```bash
 rg --files -g 'preview-stats*.json' .
@@ -33,13 +53,13 @@ If the built Storybook path is known:
 rg --files storybook-static .chromatic dist build -g 'preview-stats*.json'
 ```
 
-Use these for `TS_BAIL_MISSING_STATS` and `TS_CONFIG_PATH_MISMATCH`.
+Use these for `TS_BAIL_MISSING_STATS` and `TS_CONFIG_PATH_MISMATCH` when hosted metadata is unavailable.
 
 ## Repo-aware Chromatic trace checks
 
 Use these when you already know:
 - the changed file or files
-- the stats file path
+- the local stats file path
 - the Storybook base and config directories if they are non-default
 
 Compact trace:
@@ -73,7 +93,8 @@ Use these for:
 - `TS_TRACE_UNTRACED_EFFECT`
 
 If the issue is already a known hard bail and the next step is minimization:
-- trace the changed leaves first
+- prefer hosted metadata when a build already published it
+- otherwise trace the local changed leaves first
 - then trace or reason about the first-hop preview imports before proposing `--untraced`
 - use `reference/trace-minimization.md` for the decision rules
 
