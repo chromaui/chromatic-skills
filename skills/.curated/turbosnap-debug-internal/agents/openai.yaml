@@ -1,0 +1,4 @@
+interface:
+  display_name: "TurboSnap Debug Internal"
+  short_description: "Debug TurboSnap cases for support and solutions engineers"
+  default_prompt: "Use $turbosnap-debug-internal to investigate this TurboSnap issue and return the diagnosis card plus a customer-safe explanation."

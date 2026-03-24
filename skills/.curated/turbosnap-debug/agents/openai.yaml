@@ -1,0 +1,7 @@
+interface:
+  display_name: "TurboSnap Debug Core"
+  short_description: "Shared TurboSnap decision tree and diagnosis contract"
+  default_prompt: "Use $turbosnap-debug to classify this TurboSnap issue and produce the standard diagnosis card."
+
+policy:
+  allow_implicit_invocation: false

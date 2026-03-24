@@ -1,0 +1,17 @@
+{
+  "name": "Expected story was skipped",
+  "skills": ["turbosnap-debug-internal"],
+  "query": "A customer says TurboSnap skipped a story that should have rerun after changing a component file.",
+  "context": "TurboSnap is enabled. The changed file list is known. The customer shared a compact trace that does not include the expected story. They also use `--untraced` globs in CI.",
+  "expected_behavior": [
+    "Chooses `TS_ACTIVE_MISSED_EXPECTED_STORY` or `TS_TRACE_UNTRACED_EFFECT` depending on evidence strength",
+    "Treats `--untraced` as a likely suppressor, not a generic config footnote",
+    "Requests one targeted next artifact if needed, such as the exact `--untraced` globs or an expanded trace",
+    "Explains that TurboSnap is enabled but a dependency edge may be hidden or filtered"
+  ],
+  "success_criteria": [
+    "The response does not recommend broad unrelated fixes",
+    "The next step is narrowly tied to untraced behavior or missing dependency evidence",
+    "The diagnosis stays truthful about current TurboSnap state"
+  ]
+}
