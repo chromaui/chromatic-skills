@@ -15,4 +15,4 @@ Customer setup:
 Instructions:
 - Ask for one artifact at a time.
 - Keep the explanation customer-safe.
-- If stats are needed and the customer can rerun, prefer enabling `uploadMetadata` and asking for the direct hosted `.chromatic/preview-stats.trimmed.json` URL.
+- If stats are needed and the customer can rerun, prefer enabling `uploadMetadata`, then ask them to download the file themselves and provide the local path or paste the contents. They can still share the hosted URL with Chromatic support.

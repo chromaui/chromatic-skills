@@ -11,5 +11,5 @@ Available prompts:
 Recommended workflow:
 1. Pick the prompt file that matches the mode.
 2. Paste the prompt into Copilot Chat or agent mode with the case evidence.
-3. If stats are needed, prefer the direct hosted `.chromatic/preview-stats.trimmed.json` URL.
-4. Fall back to the local stats path only when hosted metadata is unavailable.
+3. If stats are needed, use the hosted `.chromatic/preview-stats.trimmed.json` URL as a support-shareable reference only.
+4. For continued analysis in Copilot, download the file yourself and provide the local path or paste the contents.

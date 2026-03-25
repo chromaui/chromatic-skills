@@ -32,7 +32,7 @@ Do not edit `skills/.curated/**` directly unless you are intentionally changing 
 
 ## Hosted Metadata
 
-When a TurboSnap investigation reaches the stats or trace stage, prefer hosted metadata when it is available.
+When a TurboSnap investigation reaches the stats or trace stage, hosted metadata can be useful as a human handoff artifact.
 
 Preferred artifact:
 - `<storybookUrl>.chromatic/preview-stats.trimmed.json`
@@ -40,7 +40,10 @@ Preferred artifact:
 Fallback discovery URL:
 - `<storybookUrl>.chromatic/`
 
-See `docs/metadata-artifacts.md` for enablement, URL patterns, and local trace fallback.
+Installed skills do not fetch hosted URLs automatically.
+Users can share the hosted URL with Chromatic support or download the file manually and provide a local path or pasted contents.
+
+See `docs/metadata-artifacts.md` for enablement, URL patterns, and the manual handoff workflow.
 
 ## Included Codex Skills
 

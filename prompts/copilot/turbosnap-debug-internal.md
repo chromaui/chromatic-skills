@@ -18,4 +18,4 @@ Instructions:
 - Classify first.
 - If evidence is enough, stop and return the diagnosis card plus a customer-safe explanation.
 - If evidence is not enough, ask for exactly one next artifact.
-- If stats are needed and a hosted `.chromatic/preview-stats.trimmed.json` URL exists, prefer that over a local file path.
+- If stats are needed and only a hosted `.chromatic/preview-stats.trimmed.json` URL exists, ask the user to download the file themselves and provide the local path or paste the contents.

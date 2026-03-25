@@ -29,7 +29,7 @@ Use the example if the case shape is similar:
 2. Pick the strongest diagnosis code you can support honestly.
 3. If confidence is not high, ask for exactly one next artifact or one targeted command output.
 4. Keep commands simple unless the evidence clearly requires a more advanced TurboSnap flag.
-5. If stats are needed and the customer can rerun, prefer enabling `uploadMetadata` and asking for the direct hosted `.chromatic/preview-stats.trimmed.json` URL.
+5. If stats are needed and the customer can rerun, prefer enabling `uploadMetadata`, then ask them to download the file manually and provide the local path or paste the contents. They can also share the hosted URL with Chromatic support.
 6. Render the diagnosis card in customer-safe language.
 7. If the issue remains unresolved after targeted follow-up, produce the support-ready summary.
 
@@ -40,7 +40,6 @@ Use the example if the case shape is similar:
 - Do not front-load `--externals`, `--untraced`, or directory flags unless the evidence points there.
 - If TurboSnap is unavailable or disabled for the current build, say so clearly, then explain how to restore it on the next run.
 - Do not recommend leaving TurboSnap off as the intended outcome.
-- Link one official doc page only when it clearly matches the diagnosis.
 - Prefer the short customer request snippets in `reference/intake-templates.md` when asking for the next artifact.
 
 ## Output

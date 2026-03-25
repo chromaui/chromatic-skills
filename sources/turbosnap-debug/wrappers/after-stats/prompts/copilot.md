@@ -7,7 +7,7 @@ Use the provided stats artifact and changed files to determine the smallest tech
 
 Inputs:
 - Diagnosis so far: <code or summary>
-- Hosted metadata URL or local stats path: <paste>
+- Local stats path, pasted contents, or support-shareable hosted URL: <paste>
 - Changed files: <paste list>
 - Trace output: <paste if already run>
 - Storybook base dir / config dir: <paste if non-default>

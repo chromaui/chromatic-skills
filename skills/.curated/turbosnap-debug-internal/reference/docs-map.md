@@ -1,42 +1,30 @@
-# Official Docs Map
+# Documentation Guidance
 
-Use these live Chromatic docs pages when the diagnosis clearly maps to them.
+Installed skills should explain the diagnosis directly and should not depend on live external documentation links.
 
-## Core pages
-
-- TurboSnap overview and how it works:
-  - `https://www.chromatic.com/docs/turbosnap/`
-- TurboSnap setup:
-  - `https://www.chromatic.com/docs/turbosnap/setup/`
-- TurboSnap best practices:
-  - `https://www.chromatic.com/docs/turbosnap/best-practices/`
-- TurboSnap for monorepos:
-  - `https://www.chromatic.com/docs/turbosnap-for-monorepos`
-- FAQ: turn off TurboSnap:
-  - `https://www.chromatic.com/docs/faq/how-do-i-turn-off-turbosnap/`
+If a human user needs follow-up reading, point them toward the relevant Chromatic documentation topic outside the installed skill flow.
 
 ## Suggested mapping
 
-| Diagnosis code or class | Best doc target |
+| Diagnosis code or class | Documentation topic |
 | --- | --- |
-| `TS_NOT_ENABLED` | setup |
-| `TS_UNAVAILABLE_ACCOUNT` | setup |
-| `TS_BAIL_MISSING_STATS` | setup |
-| `TS_BAIL_INVALID_GIT_HISTORY` | overview |
-| `TS_BAIL_NO_ANCESTOR_BUILD` | overview |
-| `TS_BAIL_REBUILD` | overview |
-| `TS_BAIL_EXTERNALS` | best practices |
-| `TS_BAIL_PACKAGE_FILE` | best practices or monorepos |
-| `TS_BAIL_STORYBOOK_FILE` | best practices |
-| `TS_BAIL_STATIC_FILE` | best practices |
-| `TS_CONFIG_BASE_DIR` | setup or monorepos |
-| `TS_CONFIG_PATH_MISMATCH` | setup |
-| `TS_TRACE_UNTRACED_EFFECT` | best practices |
-| `TS_ACTIVE_TOO_BROAD` | best practices or monorepos |
-| `TS_ACTIVE_MISSED_EXPECTED_STORY` | overview first, then setup if config is implicated |
+| `TS_NOT_ENABLED` | TurboSnap setup |
+| `TS_UNAVAILABLE_ACCOUNT` | TurboSnap setup and availability |
+| `TS_BAIL_MISSING_STATS` | TurboSnap setup and stats generation |
+| `TS_BAIL_INVALID_GIT_HISTORY` | TurboSnap overview and git history requirements |
+| `TS_BAIL_NO_ANCESTOR_BUILD` | TurboSnap overview and baseline build behavior |
+| `TS_BAIL_REBUILD` | TurboSnap overview and rebuild behavior |
+| `TS_BAIL_EXTERNALS` | TurboSnap best practices for externals |
+| `TS_BAIL_PACKAGE_FILE` | TurboSnap best practices or monorepo guidance |
+| `TS_BAIL_STORYBOOK_FILE` | TurboSnap best practices for preview/config changes |
+| `TS_BAIL_STATIC_FILE` | TurboSnap best practices for static assets |
+| `TS_CONFIG_BASE_DIR` | TurboSnap setup or monorepo guidance |
+| `TS_CONFIG_PATH_MISMATCH` | TurboSnap setup and path alignment |
+| `TS_TRACE_UNTRACED_EFFECT` | TurboSnap best practices for untraced files |
+| `TS_ACTIVE_TOO_BROAD` | TurboSnap best practices or monorepo guidance |
+| `TS_ACTIVE_MISSED_EXPECTED_STORY` | TurboSnap overview, then setup if config is implicated |
 
 ## Citation rule
 
-- Link docs only when they help the exact diagnosis.
-- Prefer one relevant page over a long reading list.
-- In customer output, explain the diagnosis first and link second.
+- Explain the diagnosis directly in the installed skill.
+- Keep external documentation references in human-facing repo docs, not as a dependency of the installed workflow.

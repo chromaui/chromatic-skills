@@ -7,6 +7,9 @@
 - Keep generated Codex skills self-contained in `skills/.curated`.
 - Ask for one artifact at a time in customer-facing flows.
 - Prefer hosted metadata URLs once the workflow reaches a stats or trace stage.
+- Installed skills must not fetch remote content directly.
+- Installed skills must not include direct download commands such as `curl` or `wget`.
+- Hosted metadata URLs are human-facing artifacts only unless the user manually converts them into a local file path or pasted contents.
 - Separate the minimal technical fix from the safer recommended fix whenever `--untraced` or similar suppression is involved.
 
 ## Updating TurboSnap Skills

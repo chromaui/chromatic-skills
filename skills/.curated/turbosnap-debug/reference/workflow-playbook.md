@@ -6,7 +6,7 @@ Use this workflow to match how TurboSnap cases are usually handled in support.
 
 1. classify the current build state
 2. request the smallest next artifact
-3. if stats are needed, prefer a hosted metadata URL when available
+3. if stats are needed, prefer a local stats path, pasted contents, or pasted trace output
 4. if stats are available, run targeted trace
 5. if the goal is to restore TurboSnap, minimize the fix path
 6. return a diagnosis card and customer-safe next step
@@ -36,26 +36,28 @@ Ask for one artifact only.
 Preferred order:
 - exact Chromatic command or GitHub Action step
 - Storybook build command
-- hosted metadata URL for `.chromatic/preview-stats.trimmed.json`
-- hosted `.chromatic/` directory URL when the direct JSON URL is unknown
 - confirmation that `preview-stats.json` exists locally
 - local stats file path
+- pasted trace output or pasted stats-file excerpts
+- hosted metadata URL for `.chromatic/preview-stats.trimmed.json` as a support-shareable artifact
+- hosted `.chromatic/` directory URL when the direct JSON URL is unknown
 - changed files list
 - one targeted `chromatic trace` output
 
 Use hosted metadata only when the workflow has reached a stats or trace stage.
+Installed skills should not fetch the hosted URL themselves.
 Do not front-load `uploadMetadata` during basic classification when the issue is already proven by logs.
 
 ## Phase C: Trace And Minimize
 
 Only enter this phase when at least one of these is true:
 - the bail reason is already known and the goal is to restore TurboSnap
-- the customer shared a stats file, a hosted metadata URL, and changed files
+- the customer shared a stats file, pasted contents, or changed files
 - a prior trace already showed the broad or missed path that needs explanation
 
 In this phase:
 - validate the bail or active trace with `chromatic trace`
-- if the only stats artifact is hosted, download `.chromatic/preview-stats.trimmed.json` locally before running CLI trace
+- if the only stats artifact is a hosted URL, ask the user to download the file manually and provide a local path or paste the relevant contents
 - if the issue is a preview/config bail, use `reference/trace-minimization.md`
 - separate the minimal technical fix from the safer recommended fix
 
@@ -71,10 +73,10 @@ Always return:
 - unresolved items
 
 For customer-facing output:
-- explain the diagnosis before linking docs
+- explain the diagnosis before referencing outside docs
 - avoid internal field names unless the customer already used them
 - ask for one next artifact at a time
-- if hosted metadata is the fastest path, ask for the direct JSON URL first and the directory URL second
+- if hosted metadata exists, treat it as a human handoff artifact: the user can share the URL with support or download the file themselves and provide a local path
 
 ## Mode Guidance
 
@@ -91,7 +93,7 @@ Default posture:
 - validate the graph behavior
 - minimize the fix path if the goal is to remove a bail
 - call out coverage risk when suggesting `--untraced` or `--externals`
-- treat hosted metadata URLs as valid stats evidence once the file is downloaded or directly inspectable
+- treat hosted metadata URLs as support-shareable references, not direct machine inputs
 
 ### Customer guided
 
@@ -99,4 +101,4 @@ Default posture:
 - translate findings into plain language
 - give one exact command to run next
 - avoid advanced flags unless the evidence points there
-- introduce `uploadMetadata` only when it unlocks the next useful artifact
+- introduce `uploadMetadata` only when it unlocks the next useful artifact, and make it clear that the user must download the file manually or share the URL with support

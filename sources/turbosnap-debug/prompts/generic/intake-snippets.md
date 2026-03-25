@@ -19,7 +19,7 @@ Known evidence:
 Instructions:
 - Classify first.
 - Ask for exactly one next artifact if the evidence is incomplete.
-- Prefer the direct hosted `.chromatic/preview-stats.trimmed.json` URL over a local stats path once the workflow reaches a stats stage.
+- If the only available artifact is a hosted `.chromatic/preview-stats.trimmed.json` URL, ask the user to download the file themselves and provide the local path or paste the contents.
 ```
 
 ## Customer guided
@@ -35,7 +35,7 @@ My setup:
 - Chromatic command: <paste>
 - Storybook build command: <paste>
 - Monorepo or single package: <say which>
-- Hosted metadata URL: <paste if uploadMetadata is already enabled>
+- Hosted metadata URL: <paste if uploadMetadata is already enabled and you want to share it with support>
 
 Please ask me for one artifact at a time and explain exactly what command to run next.
 ```
@@ -50,7 +50,7 @@ Use the provided stats artifact and changed files to determine the smallest tech
 
 Inputs:
 - Diagnosis so far: <code or summary>
-- Hosted metadata URL or local stats path: <paste>
+- Local stats path, pasted contents, or support-shareable hosted URL: <paste>
 - Changed files: <paste list>
 - Trace output: <paste if already run>
 

@@ -45,12 +45,17 @@ while IFS= read -r skill_dir; do
     echo "Found non-self-contained wrapper references in $skill_dir" >&2
     STATUS=1
   fi
+
+  if rg -n "curl|wget|http://|https://" "$skill_dir" >/dev/null 2>&1; then
+    echo "Found remote fetch or external URL content in installable skill: $skill_dir" >&2
+    STATUS=1
+  fi
 done < <(find "$ROOT/skills/.curated" "$ROOT/skills/.experimental" -mindepth 1 -maxdepth 1 -type d | sort)
 
 if rg -n "preview-stats\.trimmed\.json" "$ROOT/sources/turbosnap-debug/core" >/dev/null 2>&1; then
   :
 else
-  echo "Expected hosted preview-stats.trimmed.json guidance in canonical source files" >&2
+  echo "Expected preview-stats.trimmed.json guidance in canonical source files" >&2
   STATUS=1
 fi
 

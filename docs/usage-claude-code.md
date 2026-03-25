@@ -11,5 +11,5 @@ Available prompts:
 Recommended workflow:
 1. Pick the prompt file that matches the mode.
 2. Paste the prompt into Claude Code with the case evidence.
-3. If stats are needed, prefer the direct hosted `.chromatic/preview-stats.trimmed.json` URL.
-4. Use the `.chromatic/` directory URL only when the direct JSON URL is unknown.
+3. If stats are needed, use the hosted `.chromatic/preview-stats.trimmed.json` URL as a support-shareable reference only.
+4. For continued analysis in Claude Code, download the file yourself and provide the local path or paste the contents.

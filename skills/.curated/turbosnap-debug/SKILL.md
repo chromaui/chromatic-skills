@@ -1,6 +1,6 @@
 ---
 name: turbosnap-debug
-description: Diagnose TurboSnap behavior using logs, config, git context, hosted metadata URLs, and targeted trace commands. Use when you need the shared TurboSnap decision tree or want to classify why TurboSnap is enabled, disabled, unavailable, or tracing the wrong stories.
+description: Diagnose TurboSnap behavior using logs, config, git context, support-shareable hosted metadata references, and targeted trace commands. Use when you need the shared TurboSnap decision tree or want to classify why TurboSnap is enabled, disabled, unavailable, or tracing the wrong stories.
 metadata:
   short-description: Shared TurboSnap diagnosis core
 ---
@@ -14,7 +14,7 @@ This package is the single source of truth for:
 - the evidence ladder
 - the command catalog
 - the diagnosis card output contract
-- the mapping from diagnosis classes to official docs
+- the local documentation guidance
 - the support workflow for internal and customer use
 - reusable intake templates and prompt snippets
 - preview-bail trace minimization guidance
@@ -27,7 +27,7 @@ This package is the single source of truth for:
 4. Use `reference/command-catalog.md` only when evidence is incomplete or the repo is available and targeted proof is needed.
 5. If the issue is a preview/config bail and the task is to restore TurboSnap, read `reference/trace-minimization.md`.
 6. Render the result using `reference/output-contract.md`.
-7. If you cite docs or give follow-up reading, use `reference/docs-map.md`.
+7. If a human user needs follow-up reading, use the local guidance in `reference/docs-map.md`.
 
 ## Operating modes
 
@@ -38,7 +38,7 @@ Choose one mode before you start:
 
 If the user did not specify a mode, infer it from the evidence:
 - build URL, logs, and no stats file yet usually means `internal-triage`
-- changed files plus stats file, hosted metadata URL, or trace output usually means `internal-after-stats`
+- changed files plus stats file, pasted contents, or trace output usually means `internal-after-stats`
 - direct customer conversation usually means `customer-guided`
 
 ## Required workflow
@@ -49,7 +49,7 @@ Prefer evidence already in the conversation:
 - CLI output
 - `chromatic.config.json`, `package.json` scripts, or CI snippets
 - Storybook build details
-- hosted metadata URLs under `.chromatic/`
+- hosted metadata URLs under `.chromatic/` as human-shareable references
 - changed file lists
 - prior `chromatic` or `chromatic trace` command output
 - screenshots or customer summaries
@@ -112,7 +112,7 @@ Customer-facing snippets should still be shared as needed:
 - request one artifact at a time
 - avoid internal field names unless the customer already used them
 - prefer a single exact command over a list of options
-- prefer hosted metadata URLs over local stats paths once the workflow has reached a stats stage
+- do not fetch hosted metadata inside the installed skill; ask the user to provide a local file path or pasted contents instead
 
 ## Boundaries
 

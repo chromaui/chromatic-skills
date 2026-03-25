@@ -71,13 +71,23 @@ GitHub Action:
     uploadMetadata: true
 ```
 
+## Manual handoff rule
+
+Installed skills should not fetch the hosted URL automatically.
+
+If you want to continue inside the skill workflow:
+- download the file yourself and provide the local path
+- or paste the relevant contents
+
+If you want help from Chromatic support:
+- share the hosted URL directly
+
 ## Local trace fallback
 
 `chromatic trace` still expects a local file path.
 
-If you need to run the trace CLI against a hosted artifact, download it first:
+After you have downloaded the file yourself, you can run:
 
 ```bash
-curl -fsSL '<storybook-url>.chromatic/preview-stats.trimmed.json' -o /tmp/preview-stats.trimmed.json
-npx chromatic trace -s /tmp/preview-stats.trimmed.json -m expanded <changed-file>
+npx chromatic trace -s <local-path-to-preview-stats.trimmed.json> -m expanded <changed-file>
 ```

@@ -28,7 +28,7 @@ Use the example if the case shape is similar:
 
 1. Work in `internal-after-stats` mode.
 2. Confirm the current diagnosis from the existing evidence before changing the fix path.
-3. Validate the current behavior with `chromatic trace` using the provided stats file or hosted metadata artifact and changed files.
+3. Validate the current behavior with `chromatic trace` using the provided local stats file or pasted contents plus changed files.
 4. If the issue is a preview/config bail, minimize against the first-hop preview imports before proposing `--untraced`.
 5. Separate:
    - the minimal technical fix
@@ -43,7 +43,7 @@ Use the example if the case shape is similar:
 - Be explicit about whether TurboSnap is now active, still broad, or still disabled.
 - Treat broad trace output as expected behavior until the evidence shows otherwise.
 - Do not present the smallest no-bail set as the safe default without a risk note.
-- If the only stats artifact is hosted, download it locally before running CLI trace.
+- If the only available artifact is a hosted URL, ask the user to download it manually and provide the local path or paste the relevant contents before running CLI trace.
 
 ## Output
 

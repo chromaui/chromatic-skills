@@ -37,23 +37,24 @@ When a hard bail is already known:
 ## Tier 2: Trace and path proof
 
 Request one of these when the problem is about affected stories or path alignment:
-- the direct hosted metadata URL for `.chromatic/preview-stats.trimmed.json`
-- the hosted `.chromatic/` directory URL if the direct JSON URL is unknown
 - `--trace-changed=expanded` output from a recent run
 - output from `npx chromatic trace ...`
 - the list of changed files relative to repo root
 - the local path to `preview-stats.json` or `preview-stats.trimmed.json`
+- pasted contents from `preview-stats.json` or `preview-stats.trimmed.json`
+- the direct hosted metadata URL for `.chromatic/preview-stats.trimmed.json` as a support-shareable reference
+- the hosted `.chromatic/` directory URL if the direct JSON URL is unknown
 - the location of `.storybook` or alternate config dir
 
 Customer prompt:
-> If you can rerun the build with `uploadMetadata: true`, please share the direct URL to `.chromatic/preview-stats.trimmed.json`. If you only have the `.chromatic/` directory URL, share that and we can use it to find the file.
+> If you can rerun the build with `uploadMetadata: true`, you can share the hosted `.chromatic/preview-stats.trimmed.json` URL with Chromatic support. If you want to continue here, please download the file yourself and share the local path or paste the relevant contents.
 
 Internal prompt:
-> Prefer one hosted or local stats artifact plus one targeted trace over a broad artifact request. Use the changed file with the highest leverage.
+> Prefer one local stats artifact or pasted excerpt plus one targeted trace over a broad artifact request. Treat hosted URLs as support-shareable references unless the user converts them into local or pasted content.
 
 If the hard bail is already identified and the goal is to restore TurboSnap:
-- request the hosted stats URL first when it is available
-- otherwise request the local stats file path and the changed files list
+- request the local stats file path, pasted contents, or the changed files list first
+- use a hosted URL only as a handoff artifact or ask the user to download the file manually
 - then ask for one targeted trace or run one internally
 
 ## Tier 3: Shared-dependency and filtering proof

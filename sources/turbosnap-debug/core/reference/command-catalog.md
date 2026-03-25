@@ -19,25 +19,25 @@ When both are present:
 - inspect `chromatic.config.json` for defaults and shared options
 - do not assume all TurboSnap flags live in only one place
 
-## Hosted metadata intake
+## Hosted metadata handoff
 
 Use hosted metadata when the workflow has already reached a stats or trace stage and the build published `.chromatic/` artifacts.
 
-Ask for one of these first:
+Ask for one of these only as human-operated artifacts:
 - direct hosted stats URL: `<storybookUrl>.chromatic/preview-stats.trimmed.json`
 - hosted metadata directory URL: `<storybookUrl>.chromatic/`
-
-If the user needs a download step before running `chromatic trace` locally:
-
-```bash
-curl -fsSL '<storybook-url>.chromatic/preview-stats.trimmed.json' -o /tmp/preview-stats.trimmed.json
-```
 
 Use hosted metadata for:
 - `TS_BAIL_MISSING_STATS` follow-up when a rerun is possible
 - `TS_ACTIVE_TOO_BROAD`
 - `TS_ACTIVE_MISSED_EXPECTED_STORY`
 - preview/config bail minimization after a hosted build is already available
+
+Installed skills should not fetch these URLs directly.
+If continued analysis is needed inside the skill:
+- ask the user to download the file manually and provide a local path
+- or ask them to paste the relevant contents
+- or ask them to share the URL with Chromatic support
 
 ## Stats file checks
 
@@ -93,7 +93,7 @@ Use these for:
 - `TS_TRACE_UNTRACED_EFFECT`
 
 If the issue is already a known hard bail and the next step is minimization:
-- prefer hosted metadata when a build already published it
+- prefer a local stats artifact or pasted contents
 - otherwise trace the local changed leaves first
 - then trace or reason about the first-hop preview imports before proposing `--untraced`
 - use `reference/trace-minimization.md` for the decision rules

@@ -30,7 +30,7 @@ Use the examples if the case shape is similar:
 2. Inventory the evidence already available.
 3. Choose one normalized diagnosis code from the shared taxonomy.
 4. If confidence is not high, request or run the smallest next proof step from the shared evidence ladder and command catalog.
-5. If stats are needed and a hosted `.chromatic/preview-stats.trimmed.json` URL exists, prefer that over asking for a local file path.
+5. If stats are needed and only a hosted `.chromatic/preview-stats.trimmed.json` URL exists, ask the user to download the file manually and provide the local path or paste the contents. Treat the URL itself as a support-shareable reference.
 6. If a preview/config bail is already known and stats are available, use `reference/trace-minimization.md`.
 7. Render the standard diagnosis card.
 8. Append:

@@ -16,6 +16,6 @@ Use $turbosnap-debug-internal to classify this TurboSnap issue.
 ```
 
 Use the hosted metadata flow when the investigation needs stats:
-- direct URL first: `<storybookUrl>.chromatic/preview-stats.trimmed.json`
-- fallback directory: `<storybookUrl>.chromatic/`
-- local stats path only when hosted metadata is unavailable
+- hosted URL as a support-shareable artifact: `<storybookUrl>.chromatic/preview-stats.trimmed.json`
+- fallback discovery directory: `<storybookUrl>.chromatic/`
+- local stats path or pasted contents for continued in-skill analysis

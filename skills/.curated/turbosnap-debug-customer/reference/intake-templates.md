@@ -28,8 +28,8 @@ Current message: <exact warning or error>
 Chromatic command: <exact command or action step>
 Storybook build command: <exact command>
 Build URL: <optional>
-Hosted metadata URL: <optional direct .chromatic/preview-stats.trimmed.json URL>
-Hosted metadata directory: <optional .chromatic/ directory URL>
+Hosted metadata URL: <optional support-shareable .chromatic/preview-stats.trimmed.json URL>
+Hosted metadata directory: <optional support-shareable .chromatic/ directory URL>
 Stats file path: <optional local path>
 Changed files: <optional>
 Trace output: <optional>
@@ -59,7 +59,7 @@ Instructions:
 - Classify first.
 - If evidence is enough, stop and return the diagnosis card plus a customer-safe explanation.
 - If evidence is not enough, ask for exactly one next artifact.
-- If stats are needed and hosted metadata exists, prefer the direct `.chromatic/preview-stats.trimmed.json` URL over a local file path.
+- If stats are needed and only a hosted URL exists, ask the user to download the file themselves and provide the local path or paste the relevant contents.
 ```
 
 ## Internal After-Stats Prompt
@@ -72,7 +72,7 @@ Use the provided stats artifact and changed files to determine the smallest tech
 
 Inputs:
 - Diagnosis so far: <code or summary>
-- Hosted metadata URL or local stats path: <direct .chromatic/preview-stats.trimmed.json URL or local path>
+- Hosted metadata URL, local stats path, or pasted contents: <support URL, local path, or text>
 - Changed files: <paste list>
 - Trace output: <paste if already run>
 - Storybook base dir / config dir: <paste if non-default>
@@ -100,7 +100,7 @@ Proposed fix:
 Evidence:
 - Trace output before: <paste>
 - Trace output after: <paste>
-- Hosted metadata URL or local stats path: <paste>
+- Hosted metadata URL, local stats path, or pasted contents: <paste>
 
 Instructions:
 - Say whether the fix removes the bail.
@@ -121,7 +121,7 @@ My setup:
 - Chromatic command: <paste>
 - Storybook build command: <paste>
 - Monorepo or single package: <say which>
-- Hosted metadata URL: <paste if you already enabled uploadMetadata>
+- Hosted metadata URL: <paste if you already enabled uploadMetadata and want to share it with support>
 
 Please ask me for one artifact at a time and explain exactly what command to run next.
 ```
@@ -135,7 +135,7 @@ Known issue:
 - TurboSnap is enabled, but the build says: <paste exact bail message>
 
 Available artifact:
-- Hosted metadata URL or stats file path: <path or URL>
+- Hosted metadata URL, stats file path, or pasted contents: <path, URL, or text>
 
 Please tell me the next single trace command to run and what result you need from it.
 ```
@@ -159,13 +159,13 @@ If you can rerun the build, please enable `uploadMetadata: true` for that run so
 Request hosted stats URL:
 
 ```text
-Please share the direct URL to `.chromatic/preview-stats.trimmed.json` from the published Storybook. If you only have the `.chromatic/` directory URL, share that instead.
+If you have the hosted `.chromatic/preview-stats.trimmed.json` URL, you can share it with Chromatic support. If you want to continue here, please download the file yourself and share the local path or paste the relevant contents.
 ```
 
 Request hosted metadata directory:
 
 ```text
-Please share the `.chromatic/` directory URL from the published Storybook so we can locate the uploaded metadata files.
+If you only have the `.chromatic/` directory URL, you can share it with Chromatic support. If you want to continue here, please download the relevant file yourself and share the local path or paste the relevant contents.
 ```
 
 Request local stats confirmation:

@@ -14,7 +14,7 @@ They shared:
 ## Expected use of the core
 
 - classify as `TS_ACTIVE_TOO_BROAD` or `TS_CONFIG_BASE_DIR`
-- use the hosted metadata artifact as the primary stats input instead of requesting a local file path first
+- treat the hosted metadata URL as a support-shareable reference and ask the user for a local file path or pasted contents before running trace
 - cite the shared imports and missing base-dir evidence
 - recommend one targeted next check, likely `npx @chromatic-com/turbosnap-helper` or a repo-aware `chromatic trace` with explicit `-b`
 - produce a customer-safe explanation that says TurboSnap is working, but directory/shared-import configuration is causing it to treat too much of the repo as relevant
@@ -24,5 +24,5 @@ They shared:
 This is a Phase A to Phase B case from `reference/workflow-playbook.md`:
 - classify first
 - request one next artifact
-- prefer the hosted stats artifact when it already exists
+- prefer a local stats artifact or pasted contents even when a hosted URL exists
 - do not jump to `--untraced`
