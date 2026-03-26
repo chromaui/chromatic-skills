@@ -1,0 +1,18 @@
+{
+  "name": "Preview bail safer recommendation uses one untraced glob",
+  "skills": ["turbosnap-debug-after-stats"],
+  "query": "TurboSnap is bailing through `.storybook/preview.ts`. We already traced the changed files and want the smallest valid fix plus the safer recommendation.",
+  "context": "Diagnosis so far is `TS_BAIL_STORYBOOK_FILE`. The preview-entry analysis shows the minimal technical set explicitly, but the broader safer recommendation spans `.storybook`, `packages/src/themes.tsx`, `packages/styles/global/*`, `storybook/blocks/**`, and `storybook/docs-manifest.json`. A draft answer currently emits one `--untraced` line per path.",
+  "expected_behavior": [
+    "Keeps the minimal technical fix explicit instead of glob-compressing it",
+    "Renders the safer recommended fix as one `--untraced` picomatch pattern rather than repeated per-path flags",
+    "Uses a monorepo-safe single-glob shape that can cover disjoint roots",
+    "Excludes `.storybook/main.*` and `.storybook/preview.*` from the safer compressed pattern by default",
+    "Calls out coverage risk for the broader safer recommendation"
+  ],
+  "success_criteria": [
+    "The recommended command does not render one `--untraced` flag per path",
+    "The response preserves a distinct minimal technical section and safer recommendation section",
+    "The safer recommendation keeps Storybook entry files traced unless the case explicitly proves otherwise"
+  ]
+}

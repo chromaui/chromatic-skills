@@ -60,13 +60,37 @@ If a candidate looks rendering-relevant, say so explicitly.
 When suggesting suppression, always separate:
 
 - Minimal technical fix:
-  the smallest set that removes the hard bail
+  the smallest explicit set that removes the hard bail
 
 - Safer recommendation:
   the narrower or more conservative set you would advise support to suggest first
+  render this as a single `--untraced '<picomatch-pattern>'` flag, not one flag per path
+  use one monorepo-safe picomatch pattern when the safer set spans disjoint roots
+  if `.storybook` is included, exclude `main.*` and `preview.*` by default so Storybook entry files stay traced
 
 - Coverage risk:
   what kind of regressions could be missed if those paths are untraced
+
+Do not glob-compress the minimal technical fix. Keep that section explicit so the model shows exactly which preview-entry points or files remove the bail.
+
+## Example Transformation
+
+If the current safer set includes these paths:
+
+- `.storybook/*`
+- `packages/src/themes.tsx`
+- `packages/styles/global/*`
+- `storybook/blocks/**`
+- `storybook/docs-manifest.json`
+
+Prefer a single recommended flag instead:
+
+```bash
+npx chromatic --only-changed \
+  --untraced '**/(.storybook/!(main.*|preview.*)|src/themes.tsx|packages/styles/global/*|storybook/blocks/**|storybook/docs-manifest.json)'
+```
+
+The exact pattern can vary with the repo layout, but the safer recommendation should still be one `--untraced` flag with one picomatch pattern rather than repeated per-path lines.
 
 ## What not to do
 
@@ -74,3 +98,4 @@ When suggesting suppression, always separate:
 - Do not say a wide trace is wrong just because many stories are affected.
 - Do not recommend leaf-level `--untraced` first if the real leverage is in the preview-entry points.
 - Do not present the minimal technical set as the safe default without a risk note.
+- Do not render the safer recommendation as one `--untraced` line per file when one glob can express the same recommendation.

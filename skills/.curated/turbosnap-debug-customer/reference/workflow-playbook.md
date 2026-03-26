@@ -60,6 +60,8 @@ In this phase:
 - if the only stats artifact is a hosted URL, ask the user to download the file manually and provide a local path or paste the relevant contents
 - if the issue is a preview/config bail, use `reference/trace-minimization.md`
 - separate the minimal technical fix from the safer recommended fix
+- keep the minimal technical fix explicit
+- render the safer recommended `--untraced` fix as one picomatch glob instead of one flag per path when the safer set can be compressed safely
 
 ## Phase D: Return Actionable Results
 
@@ -93,6 +95,7 @@ Default posture:
 - validate the graph behavior
 - minimize the fix path if the goal is to remove a bail
 - call out coverage risk when suggesting `--untraced` or `--externals`
+- prefer one monorepo-safe `--untraced` glob for the safer recommendation, while keeping the minimal technical set explicit
 - treat hosted metadata URLs as support-shareable references, not direct machine inputs
 
 ### Customer guided

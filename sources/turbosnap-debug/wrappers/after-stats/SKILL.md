@@ -32,7 +32,7 @@ Use the example if the case shape is similar:
 4. If the issue is a preview/config bail, minimize against the first-hop preview imports before proposing `--untraced`.
 5. Separate:
    - the minimal technical fix
-   - the safer recommended fix
+   - the safer recommended fix as one `--untraced` picomatch glob when one glob can cover the intended paths
    - the coverage risk
 6. Render the standard diagnosis card plus a customer-safe explanation.
 

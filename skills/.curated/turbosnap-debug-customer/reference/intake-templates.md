@@ -80,6 +80,9 @@ Inputs:
 Instructions:
 - If this is a preview/config bail, map changed leaves to the first-hop imports under preview.
 - Separate the minimal technical untraced set from the safer recommended set.
+- Keep the minimal technical set explicit.
+- Render the safer recommended `--untraced` output as one monorepo-safe picomatch glob, not one flag per path.
+- If the safer glob covers `.storybook`, exclude `main.*` and `preview.*` by default.
 - Be explicit about coverage risk.
 - End with a customer-safe explanation.
 ```
@@ -105,6 +108,7 @@ Evidence:
 Instructions:
 - Say whether the fix removes the bail.
 - Say whether TurboSnap is now active, still broad, or still disabled.
+- If the proposed safer fix uses `--untraced`, prefer one picomatch glob over repeated per-path flags.
 - Call out risk of false negatives if the fix suppresses rendering-relevant dependencies.
 ```
 

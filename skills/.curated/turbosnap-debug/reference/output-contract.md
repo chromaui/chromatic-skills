@@ -44,6 +44,14 @@ The internal wrapper should append:
 
 Use normalized codes in the internal output.
 
+## Suppression formatting
+
+When the likely fix path includes `--untraced`:
+- keep the minimal technical fix explicit
+- render the safer recommended fix as one `--untraced '<picomatch-pattern>'`
+- avoid repeating one `--untraced` flag per path in the recommended command
+- if the safer pattern covers `.storybook`, exclude `main.*` and `preview.*` by default unless the case explicitly proves those files are safe to suppress
+
 ## Customer wrapper add-on
 
 The customer wrapper should:

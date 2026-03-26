@@ -118,6 +118,7 @@ Customer-facing snippets should still be shared as needed:
 
 - Do not recommend “just leave TurboSnap off” as the intended end state in v1.
 - Do not suggest `--externals`, `--untraced`, `--storybook-base-dir`, or `--storybook-config-dir` unless the evidence points there.
+- When suggesting `--untraced`, keep the minimal technical set explicit and compress the safer recommendation into one monorepo-safe picomatch glob when possible.
 - Do not ask for large evidence bundles when one smaller artifact would settle the branch.
 
 ## References and examples

@@ -147,5 +147,6 @@ In CI, also inspect checkout depth and merge-commit strategy before tracing anyt
 
 - Do not suggest `--externals` or `--untraced` unless the current evidence points to those exact flags.
 - When suggesting `--untraced`, separate the minimal technical set from the safer recommended set.
+- Keep the minimal technical set explicit, but render the safer recommended `--untraced` fix as one monorepo-safe picomatch glob when one glob can cover the intended paths.
 - Do not recommend removing TurboSnap as the main fix path in v1.
 - If a hard bail is proven, focus on the smallest fix that restores TurboSnap on the next run.
