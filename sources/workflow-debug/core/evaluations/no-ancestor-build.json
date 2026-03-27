@@ -1,0 +1,15 @@
+{
+  "name": "No ancestor build exists for the current branch path",
+  "skills": ["workflow-debug"],
+  "query": "Chromatic says there is no ancestor build.",
+  "context": "The branch has not previously produced a usable build in the relevant history path and the customer wants to know whether this is expected.",
+  "expected_behavior": [
+    "Chooses `WF_NO_ANCESTOR_BUILD`",
+    "Explains that the current run has no usable prior build to compare against",
+    "Describes what should happen after a successful baseline-establishing run"
+  ],
+  "success_criteria": [
+    "The response is honest about the current run",
+    "The response does not invent a nonexistent baseline"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Rebased branch keeps pointing at an old branch build",
+  "skills": ["workflow-debug"],
+  "query": "We rebased and now the baseline behavior is confusing.",
+  "context": "The customer rebased the branch on main, force-pushed, and then reported that Chromatic reused a previous branch build in a way they did not expect.",
+  "expected_behavior": [
+    "Chooses `WF_REBASE_BASELINE_CONFUSION`",
+    "Explains why rebases can change baseline expectations",
+    "Mentions `ignoreLastBuildOnBranch` only when it fits the described pattern"
+  ],
+  "success_criteria": [
+    "The response does not pretend the current run is using a normal ancestor path",
+    "The next step is limited to one setting or one proof artifact"
+  ]
+}

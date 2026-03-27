@@ -78,7 +78,7 @@ Do not glob-compress the minimal technical fix. Keep that section explicit so th
 If the current safer set includes these paths:
 
 - `.storybook/*`
-- `packages/src/themes.tsx`
+- `src/themes.tsx`
 - `packages/styles/global/*`
 - `storybook/blocks/**`
 - `storybook/docs-manifest.json`

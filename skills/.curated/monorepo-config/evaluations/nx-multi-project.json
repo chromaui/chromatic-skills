@@ -1,0 +1,15 @@
+{
+  "name": "Nx repo with multiple independently owned Storybooks should split projects",
+  "skills": ["monorepo-config"],
+  "query": "Should our Nx workspace use one Chromatic project or several?",
+  "context": "The repo has multiple Storybooks owned by different teams, each with separate review and release cadence requirements.",
+  "expected_behavior": [
+    "Recommends multiple Chromatic projects",
+    "Explains the ownership and approval reasons for splitting",
+    "Suggests one step or token per Storybook"
+  ],
+  "success_criteria": [
+    "The response does not default to one shared project",
+    "The response explains why separate baselines matter"
+  ]
+}

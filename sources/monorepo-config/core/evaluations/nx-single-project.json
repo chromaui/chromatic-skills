@@ -1,0 +1,15 @@
+{
+  "name": "Nx repo with one shared Storybook should stay on one Chromatic project",
+  "skills": ["monorepo-config"],
+  "query": "What is the best Chromatic setup for our Nx monorepo?",
+  "context": "The repo has one shared design-system Storybook, builds through an Nx target, and wants a single review surface with TurboSnap enabled.",
+  "expected_behavior": [
+    "Recommends one Chromatic project",
+    "Uses `buildCommand` plus `outputDir` or an equivalent Nx-friendly pattern",
+    "Calls out `onlyChanged: true` and full git history"
+  ],
+  "success_criteria": [
+    "The response makes a concrete topology decision",
+    "The response includes an Nx-specific execution pattern"
+  ]
+}
