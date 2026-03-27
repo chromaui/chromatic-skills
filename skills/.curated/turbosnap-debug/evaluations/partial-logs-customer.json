@@ -1,16 +1,17 @@
 {
   "name": "Customer only has partial logs",
-  "skills": ["turbosnap-debug-customer"],
+  "skills": ["turbosnap-debug"],
+
   "query": "TurboSnap seems wrong but I only have a screenshot of the Chromatic output.",
   "context": "The screenshot suggests TurboSnap was enabled, but there is no command line, no config snippet, and no trace output. The customer cannot tell whether a full build happened or too many stories ran.",
   "expected_behavior": [
     "Chooses `TS_NEEDS_MORE_EVIDENCE` initially",
     "Requests only one next artifact instead of a long checklist",
-    "Keeps the explanation customer-safe and low-jargon",
+    "Keeps the explanation concise and customer-safe without hiding useful technical terms",
     "If the follow-up still does not resolve the issue, it can emit the support-ready summary format"
   ],
   "success_criteria": [
-    "The customer wrapper does not overwhelm the user with multiple advanced commands at once",
+    "The skill does not overwhelm the user with multiple advanced commands at once",
     "The initial diagnosis remains low confidence",
     "The response includes a single next artifact request",
     "If unresolved, the support summary is copy-paste ready"

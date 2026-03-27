@@ -1,6 +1,6 @@
 {
   "name": "Expected story was skipped",
-  "skills": ["turbosnap-debug-internal"],
+  "skills": ["turbosnap-debug"],
   "query": "A customer says TurboSnap skipped a story that should have rerun after changing a component file.",
   "context": "TurboSnap is enabled. The changed file list is known. The customer shared a compact trace that does not include the expected story. They also use `--untraced` globs in CI.",
   "expected_behavior": [

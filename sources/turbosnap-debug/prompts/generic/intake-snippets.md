@@ -1,12 +1,12 @@
 # Generic TurboSnap Prompt Snippets
 
-## Internal triage
+## General diagnosis
 
 ```text
-Use the TurboSnap internal-triage workflow.
+Use $turbosnap-debug to diagnose this TurboSnap issue.
 
 Goal:
-Identify the primary diagnosis code and the single next artifact to request.
+Identify the primary diagnosis code, explain the current TurboSnap state, and choose the single next artifact or fix.
 
 Known evidence:
 - Build URL: <url>
@@ -19,13 +19,14 @@ Known evidence:
 Instructions:
 - Classify first.
 - Ask for exactly one next artifact if the evidence is incomplete.
+- Use technical terms when they improve precision, but define them plainly.
 - If the only available artifact is a hosted `.chromatic/preview-stats.trimmed.json` URL, ask the user to download the file themselves and provide the local path or paste the contents.
 ```
 
-## Customer guided
+## Customer self-serve
 
 ```text
-Help me diagnose TurboSnap.
+Use $turbosnap-debug to help me diagnose TurboSnap.
 
 What I’m seeing:
 - <full build every time / too many stories / story was skipped>
@@ -37,13 +38,13 @@ My setup:
 - Monorepo or single package: <say which>
 - Hosted metadata URL: <paste if uploadMetadata is already enabled and you want to share it with support>
 
-Please ask me for one artifact at a time and explain exactly what command to run next.
+Please ask me for one artifact at a time, explain any technical terms briefly, and tell me exactly what command to run next.
 ```
 
-## After stats
+## Trace validation
 
 ```text
-Use the TurboSnap internal-after-stats workflow.
+Use $turbosnap-debug to validate this TurboSnap issue now that richer evidence is available.
 
 Goal:
 Use the provided stats artifact and changed files to determine the smallest technically valid change that removes the current bail reason.

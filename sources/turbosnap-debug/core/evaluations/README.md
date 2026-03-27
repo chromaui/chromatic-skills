@@ -1,25 +1,26 @@
 # TurboSnap Debug Evaluations
 
-Evaluation scenarios for the private TurboSnap skill suite.
+Evaluation scenarios for the adaptive TurboSnap skill.
 
 ## Purpose
 
-These scenarios verify that the shared core and thin wrappers:
-- pick the right normalized diagnosis code
-- cite the right evidence
-- ask for the smallest next artifact
-- preserve TurboSnap as the intended fix path without hiding current hard-bail states
-- render audience-appropriate output
+These scenarios verify that the single public skill:
+- picks the right normalized diagnosis code
+- cites the right evidence
+- asks for the smallest next artifact
+- preserves TurboSnap as the intended fix path without hiding current hard-bail states
+- adapts its output depth to the evidence and audience without requiring separate installables
 
 ## Coverage
 
-The initial set covers:
+The set covers:
 - missing stats files
 - invalid git history
 - base-dir and path mismatch issues
 - overly broad traces
 - missed expected stories
-- partial-log customer cases that should end in a support-ready summary
+- low-evidence self-serve cases that should end in a support-ready summary when needed
+- preview-bail minimization with minimal-fix versus safer-fix guidance
 
 ## How to use
 
@@ -34,4 +35,4 @@ Good evaluations are:
 - specific about the evidence available
 - explicit about the expected diagnosis code
 - clear about the next artifact or command
-- precise about wrapper-specific behavior
+- precise about when the response should stay concise versus include a deeper technical note

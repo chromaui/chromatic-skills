@@ -81,5 +81,5 @@ Stop asking for more evidence when:
 - the next artifact would be redundant
 
 If confidence stays low after one or two targeted follow-ups:
-- internal flows should name the most likely diagnosis and the next artifact
-- customer flows should produce the support-ready summary from `reference/output-contract.md`
+- name the most likely diagnosis and the next artifact
+- if the case still needs human handoff, produce the support-ready summary from `reference/output-contract.md`

@@ -10,7 +10,7 @@ sources/
     core/
   turbosnap-debug/
     core/
-    wrappers/
+    prompts/
   workflow-debug/
     core/
 prompts/
@@ -41,13 +41,7 @@ Do not edit `skills/.curated/**` directly unless you are intentionally changing 
 - `monorepo-config`
   Public-safe recommendation and audit skill for Nx and Turborepo Chromatic setups, including topology choice and TurboSnap-safe configuration.
 - `turbosnap-debug`
-  Shared TurboSnap diagnosis core, taxonomy, workflow, and references.
-- `turbosnap-debug-internal`
-  Internal support and Solutions Engineering wrapper for classification and customer-ready output.
-- `turbosnap-debug-customer`
-  Customer-safe wrapper for step-by-step self-serve debugging.
-- `turbosnap-debug-after-stats`
-  Internal wrapper for validation and minimization after a stats artifact and changed files are available.
+  Public adaptive TurboSnap diagnosis skill for low-evidence triage, artifact requests, trace validation, and safer-fix guidance.
 
 ## Hosted Metadata
 
@@ -90,4 +84,4 @@ Copilot and VS Code-hosted workflows:
 
 - Keep stable installable skills in `skills/.curated/`.
 - Put trial workflows in `skills/.experimental/`.
-- Wrapper-based families must remain self-contained because many installers copy one skill directory at a time.
+- Wrapper-based families, if any are added later, must remain self-contained because many installers copy one skill directory at a time.

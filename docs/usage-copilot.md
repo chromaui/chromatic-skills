@@ -6,9 +6,7 @@ Use the prompt pack under `prompts/copilot/`.
 Available prompts:
 - `prompts/copilot/workflow-debug.md`
 - `prompts/copilot/monorepo-config.md`
-- `prompts/copilot/turbosnap-debug-internal.md`
-- `prompts/copilot/turbosnap-debug-customer.md`
-- `prompts/copilot/turbosnap-debug-after-stats.md`
+- `prompts/copilot/turbosnap-debug.md`
 
 Recommended workflow:
 1. Pick the prompt file that matches the task.

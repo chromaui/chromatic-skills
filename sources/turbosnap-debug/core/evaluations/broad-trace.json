@@ -1,6 +1,6 @@
 {
   "name": "TurboSnap retraces too many stories",
-  "skills": ["turbosnap-debug-internal"],
+  "skills": ["turbosnap-debug"],
   "query": "Why did TurboSnap retest most of the Storybook after a small component change?",
   "context": "The run shows 'TurboSnap enabled'. Expanded trace output reaches a shared preview import and a broad utilities package. No hard-bail message is present.",
   "expected_behavior": [
@@ -8,11 +8,11 @@
     "Keeps TurboSnap state as enabled",
     "Uses the expanded trace output as primary evidence",
     "Recommends one targeted next step such as validating shared preview imports or confirming the base/config directories",
-    "Adds a customer-safe explanation that says TurboSnap is working but the dependency graph is broad"
+    "Explains that TurboSnap is working but the dependency graph is broad, and may include a deeper technical note if it helps the handoff"
   ],
   "success_criteria": [
     "The response does not misclassify this as a hard bail",
     "The next step is a targeted trace or config check",
-    "The internal output includes a pasteable customer explanation"
+    "The diagnosis card stays customer-safe while still being technically precise"
   ]
 }

@@ -1,7 +1,7 @@
 interface:
-  display_name: "TurboSnap Debug Core"
-  short_description: "Shared TurboSnap decision tree and diagnosis contract"
-  default_prompt: "Use $turbosnap-debug to classify this TurboSnap issue and produce the standard diagnosis card."
+  display_name: "TurboSnap Debug"
+  short_description: "Adaptive TurboSnap diagnosis and fix guidance"
+  default_prompt: "Use $turbosnap-debug to diagnose this TurboSnap issue, ask for the smallest next artifact when needed, and return the standard diagnosis card."
 
 policy:
   allow_implicit_invocation: false

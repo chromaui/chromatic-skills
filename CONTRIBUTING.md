@@ -3,7 +3,7 @@
 ## Principles
 
 - Treat `sources/<family>/core` as the canonical source for any public installable skill.
-- Keep wrapper source files thin when a family uses wrappers.
+- Default to one adaptive public skill per family. Add wrappers only when the reasoning or install surface truly diverges.
 - Keep generated Codex skills self-contained in `skills/.curated`.
 - Keep new public families customer-safe end to end.
 - Ask for one artifact at a time in diagnostic workflows.
@@ -24,7 +24,7 @@
 ## Adding a New Skill Family
 
 1. Add canonical source content first under `sources/<family>/core`.
-2. Decide whether the family is core-only or also needs wrappers.
+2. Default to a core-only family. Add wrappers only if a separate installable is materially different in behavior, not just tone.
 3. Keep installable outputs self-contained.
 4. Add prompt adapters under `sources/<family>/prompts`.
 5. Update README and usage docs once the family is ready to share.

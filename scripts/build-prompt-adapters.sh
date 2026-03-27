@@ -41,6 +41,8 @@ while IFS= read -r family_dir; do
 
   if [[ -d "$family_dir/wrappers" ]]; then
     while IFS= read -r wrapper_dir; do
+      [[ -f "$wrapper_dir/SKILL.md" ]] || continue
+
       wrapper_skill_name="$(skill_name_from "$wrapper_dir/SKILL.md")"
       copy_prompt_if_present \
         "$wrapper_dir/prompts/claude-code.md" \

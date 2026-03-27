@@ -1,4 +1,0 @@
-interface:
-  display_name: "TurboSnap Debug Customer"
-  short_description: "Guide customers through self-serve TurboSnap debugging"
-  default_prompt: "Use $turbosnap-debug-customer to guide this customer through TurboSnap debugging step by step."

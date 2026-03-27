@@ -1,17 +1,17 @@
 # TurboSnap Support Workflow
 
-Use this workflow to match how TurboSnap cases are usually handled in support.
+Use this adaptive workflow for customer, support, and engineer investigations.
 
 ## Default path
 
-1. classify the current build state
+1. triage the current build state
 2. request the smallest next artifact
-3. if stats are needed, prefer a local stats path, pasted contents, or pasted trace output
-4. if stats are available, run targeted trace
-5. if the goal is to restore TurboSnap, minimize the fix path
-6. return a diagnosis card and customer-safe next step
+3. if richer evidence is available, validate it with targeted trace or path proof
+4. if the goal is to restore TurboSnap, minimize the fix path
+5. return a diagnosis card and exact next step
+6. include a deeper technical note only when it changes the recommendation or helps handoff
 
-## Phase A: Classify The Build State
+## Phase 1: Triage
 
 Start with the evidence already present:
 - build URL
@@ -29,7 +29,7 @@ Typical outcomes:
 - config unclear: request the invoking command or config
 - active trace dispute: request the smallest trace artifact
 
-## Phase B: Request The Smallest Next Artifact
+## Phase 2: Artifact Request
 
 Ask for one artifact only.
 
@@ -48,11 +48,11 @@ Use hosted metadata only when the workflow has reached a stats or trace stage.
 Installed skills should not fetch the hosted URL themselves.
 Do not front-load `uploadMetadata` during basic classification when the issue is already proven by logs.
 
-## Phase C: Trace And Minimize
+## Phase 3: Trace Validation
 
 Only enter this phase when at least one of these is true:
 - the bail reason is already known and the goal is to restore TurboSnap
-- the customer shared a stats file, pasted contents, or changed files
+- the user shared a stats file, pasted contents, or changed files
 - a prior trace already showed the broad or missed path that needs explanation
 
 In this phase:
@@ -63,45 +63,21 @@ In this phase:
 - keep the minimal technical fix explicit
 - render the safer recommended `--untraced` fix as one picomatch glob instead of one flag per path when the safer set can be compressed safely
 
-## Phase D: Return Actionable Results
+## Phase 4: Recommendation
 
 Always return:
 - diagnosis code
 - confidence
 - current TurboSnap state
 - key evidence
-- the next step
+- the recommended next step
 - likely fix path
 - unresolved items
 
-For customer-facing output:
+Default posture:
 - explain the diagnosis before referencing outside docs
-- avoid internal field names unless the customer already used them
-- ask for one next artifact at a time
+- keep the output customer-safe, but technically honest
+- use technical terms when they improve precision and define them plainly
+- ask for one next artifact at a time when evidence is incomplete
 - if hosted metadata exists, treat it as a human handoff artifact: the user can share the URL with support or download the file themselves and provide a local path
-
-## Mode Guidance
-
-### Internal triage
-
-Default posture:
-- identify the code
-- decide the next artifact
-- keep the customer explanation short and pasteable
-
-### Internal after stats
-
-Default posture:
-- validate the graph behavior
-- minimize the fix path if the goal is to remove a bail
-- call out coverage risk when suggesting `--untraced` or `--externals`
-- prefer one monorepo-safe `--untraced` glob for the safer recommendation, while keeping the minimal technical set explicit
-- treat hosted metadata URLs as support-shareable references, not direct machine inputs
-
-### Customer guided
-
-Default posture:
-- translate findings into plain language
-- give one exact command to run next
-- avoid advanced flags unless the evidence points there
-- introduce `uploadMetadata` only when it unlocks the next useful artifact, and make it clear that the user must download the file manually or share the URL with support
+- if the user is a support engineer or power user, add a deeper technical note only when it materially improves the decision or handoff

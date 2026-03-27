@@ -6,9 +6,6 @@ Install the curated skill that matches your workflow:
 npx skills add chromaui/chromatic-skills@workflow-debug
 npx skills add chromaui/chromatic-skills@monorepo-config
 npx skills add chromaui/chromatic-skills@turbosnap-debug
-npx skills add chromaui/chromatic-skills@turbosnap-debug-internal
-npx skills add chromaui/chromatic-skills@turbosnap-debug-customer
-npx skills add chromaui/chromatic-skills@turbosnap-debug-after-stats
 ```
 
 Then invoke the skill directly in Codex:
@@ -16,7 +13,7 @@ Then invoke the skill directly in Codex:
 ```text
 Use $workflow-debug to diagnose this Chromatic baseline issue.
 Use $monorepo-config to recommend the best Chromatic setup for this Nx monorepo.
-Use $turbosnap-debug-customer to guide this TurboSnap investigation.
+Use $turbosnap-debug to diagnose this TurboSnap investigation.
 ```
 
 Use the hosted metadata flow when a TurboSnap investigation needs stats:

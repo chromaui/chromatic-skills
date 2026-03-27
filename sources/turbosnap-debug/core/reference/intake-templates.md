@@ -14,14 +14,14 @@ Reason:
 Customer-facing prompts should usually be shared as needed:
 - send only the shortest prompt that matches the current step
 - ask for one artifact or one command run at a time
-- do not dump the full internal intake form on a customer unless they asked for a self-serve workflow
+- do not dump the full structured intake form on a customer unless they asked for a self-serve workflow
 
 ## Compact Intake Form
 
 Use this when the user can provide a structured bundle.
 
 ```text
-Audience: internal | customer
+Audience: internal | customer | mixed handoff
 Goal: classify bail | restore TurboSnap | reduce affected stories | validate proposed fix
 Symptom: <full rebuild / too broad / missed story / unavailable>
 Current message: <exact warning or error>
@@ -38,13 +38,13 @@ storybookConfigDir: <optional>
 Repo layout: <single package / monorepo / package path>
 ```
 
-## Internal Triage Prompt
+## General Diagnosis Prompt
 
 ```text
-Use turbosnap-debug in internal-triage mode.
+Use $turbosnap-debug to diagnose this TurboSnap issue.
 
 Goal:
-Identify the primary TurboSnap diagnosis code and the single next artifact to request.
+Identify the primary TurboSnap diagnosis code, explain the current state, and choose the single next artifact or fix.
 
 Known evidence:
 - Build URL: <url>
@@ -57,18 +57,19 @@ Known evidence:
 
 Instructions:
 - Classify first.
-- If evidence is enough, stop and return the diagnosis card plus a customer-safe explanation.
+- If evidence is enough, stop and return the diagnosis card.
 - If evidence is not enough, ask for exactly one next artifact.
+- Use technical terms when they improve precision, but define them plainly.
 - If stats are needed and only a hosted URL exists, ask the user to download the file themselves and provide the local path or paste the relevant contents.
 ```
 
-## Internal After-Stats Prompt
+## Trace Validation Prompt
 
 ```text
-Use turbosnap-debug in internal-after-stats mode.
+Use $turbosnap-debug to validate this TurboSnap issue now that richer evidence is available.
 
 Goal:
-Use the provided stats artifact and changed files to determine the smallest technically valid change that removes the current bail reason.
+Use the provided stats artifact, changed files, or trace output to determine the smallest technically valid change that removes the current bail reason or explains the broad or missed trace.
 
 Inputs:
 - Diagnosis so far: <code or summary>
@@ -78,19 +79,19 @@ Inputs:
 - Storybook base dir / config dir: <paste if non-default>
 
 Instructions:
-- If this is a preview/config bail, map changed leaves to the first-hop imports under preview.
-- Separate the minimal technical untraced set from the safer recommended set.
+- If this is a preview/config bail, map changed leaves to the first-hop preview imports under preview.
+- Separate the minimal technical fix from the safer recommended set.
 - Keep the minimal technical set explicit.
 - Render the safer recommended `--untraced` output as one monorepo-safe picomatch glob, not one flag per path.
 - If the safer glob covers `.storybook`, exclude `main.*` and `preview.*` by default.
 - Be explicit about coverage risk.
-- End with a customer-safe explanation.
+- End with the diagnosis card and include a deeper technical note only if it helps.
 ```
 
-## Internal Validation Prompt
+## Proposed-Fix Validation Prompt
 
 ```text
-Use turbosnap-debug in internal-after-stats mode.
+Use $turbosnap-debug to validate whether this proposed TurboSnap fix is both effective and safe.
 
 Goal:
 Validate whether this proposed fix actually removes the bail and whether it is safe.
@@ -115,7 +116,7 @@ Instructions:
 ## Customer Self-Serve Prompt
 
 ```text
-Help me diagnose TurboSnap.
+Use $turbosnap-debug to help me diagnose TurboSnap.
 
 What I’m seeing:
 - <full build every time / too many stories / story was skipped>
@@ -127,13 +128,13 @@ My setup:
 - Monorepo or single package: <say which>
 - Hosted metadata URL: <paste if you already enabled uploadMetadata and want to share it with support>
 
-Please ask me for one artifact at a time and explain exactly what command to run next.
+Please ask me for one artifact at a time, explain any jargon briefly, and tell me exactly what command to run next.
 ```
 
-## Customer After-Bail Prompt
+## Focused Post-Bail Prompt
 
 ```text
-Help me investigate this TurboSnap bail.
+Use $turbosnap-debug to investigate this TurboSnap bail.
 
 Known issue:
 - TurboSnap is enabled, but the build says: <paste exact bail message>

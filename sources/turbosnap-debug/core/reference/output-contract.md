@@ -1,6 +1,6 @@
 # Output Contract
 
-Every response must include a diagnosis card.
+Every response must include one diagnosis card.
 
 ## Standard diagnosis card
 
@@ -11,16 +11,17 @@ Use this structure:
 - Code: <normalized diagnosis code>
 - Confidence: High | Medium | Low
 - Current TurboSnap state: Enabled | Disabled for this build | Unavailable | Not enabled
+- Summary: <one-sentence plain-language readout>
 
-## Evidence
+## Key Evidence
 - <signal 1>
 - <signal 2>
 - <signal 3>
 
-## Interpretation
-<one short paragraph explaining why the evidence maps to the diagnosis>
+## Current State
+<one short paragraph explaining what TurboSnap is doing right now and why the evidence maps to the diagnosis>
 
-## Next Step
+## Recommended Next Step
 - <the single highest-value check, command, or fix>
 
 ## Likely Fix Path
@@ -28,21 +29,13 @@ Use this structure:
 
 ## Unresolved
 - <what remains unknown, or `None`>
+
+## Deeper Technical Note
+<optional; include only when extra implementation detail changes the recommendation or helps a support handoff>
 ```
 
-## Internal wrapper add-on
-
-The internal wrapper should append:
-
-```markdown
-## Customer-Safe Explanation
-<short explanation that can be pasted to a customer with the right level of jargon>
-
-## Next Artifact To Request
-- <one artifact only>
-```
-
-Use normalized codes in the internal output.
+The `Deeper Technical Note` section is optional.
+Leave it out when the diagnosis card is already sufficient.
 
 ## Suppression formatting
 
@@ -52,17 +45,18 @@ When the likely fix path includes `--untraced`:
 - avoid repeating one `--untraced` flag per path in the recommended command
 - if the safer pattern covers `.storybook`, exclude `main.*` and `preview.*` by default unless the case explicitly proves those files are safe to suppress
 
-## Customer wrapper add-on
+## Audience adaptation
 
-The customer wrapper should:
-- keep the diagnosis card in plain language
-- avoid raw repo field names unless the customer already used them
+Default posture:
+- keep the diagnosis card customer-safe
+- use technical terms when they improve precision, then define them plainly
+- avoid raw repo field names unless the user already used them
 - ask for only one next artifact at a time
-- include official docs links only when they clearly match the diagnosis
+- include outside docs references only when they clearly match the diagnosis and the user needs follow-up reading
 
 ## Support-ready summary
 
-When the customer flow cannot reach a confident fix after targeted follow-up, append:
+When the investigation cannot reach a confident fix after targeted follow-up, append:
 
 ```markdown
 ## Support Summary
@@ -74,4 +68,4 @@ When the customer flow cannot reach a confident fix after targeted follow-up, ap
 - Remaining unknown: <single biggest missing fact>
 ```
 
-This summary should be copy-paste ready for a support ticket.
+This summary should be copy-paste ready for a support ticket or handoff.
