@@ -1,6 +1,8 @@
 interface:
   display_name: "TurboSnap Debug"
   short_description: "Adaptive TurboSnap diagnosis and fix guidance"
+  icon_small: './assets/icon-small.svg'
+  icon_large: './assets/icon-large.png'
   default_prompt: "Use $turbosnap-debug to diagnose this TurboSnap issue, ask for the smallest next artifact when needed, and return the standard diagnosis card."
 
 policy:

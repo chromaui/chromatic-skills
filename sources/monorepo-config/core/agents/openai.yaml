@@ -1,6 +1,8 @@
 interface:
   display_name: "Monorepo Config"
   short_description: "Recommend Chromatic topology and TurboSnap-safe config for Nx and Turborepo"
+  icon_small: './assets/icon-small.svg'
+  icon_large: './assets/icon-large.png'
   default_prompt: "Use $monorepo-config to recommend the best Chromatic setup for this monorepo and return the standard recommendation card."
 
 policy:
