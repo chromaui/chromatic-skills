@@ -1,0 +1,15 @@
+{
+  "name": "Merge queue branch name hides the real PR branch",
+  "skills": ["workflow-debug"],
+  "query": "Our merge queue run seems to compare against the wrong branch.",
+  "context": "The branch name matches a GitHub merge queue pattern and the customer expects Chromatic to reason about the original pull request branch instead.",
+  "expected_behavior": [
+    "Chooses `WF_MERGE_QUEUE_BRANCH_REMAP` or explains that branch remapping is the decisive factor",
+    "Explains merge queue branch naming in public-safe language",
+    "Requests at most one confirming artifact if needed"
+  ],
+  "success_criteria": [
+    "The response does not misclassify the issue as a generic shallow-history problem",
+    "The response explains the branch-name translation clearly"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Replacement build is used after old commit disappeared",
+  "skills": ["workflow-debug"],
+  "query": "Why is Chromatic talking about a replacement build?",
+  "context": "A prior baseline commit was force-pushed away, and Chromatic surfaced replacement-build language while still computing changed files.",
+  "expected_behavior": [
+    "Chooses `WF_REPLACEMENT_BUILD`",
+    "Explains replacement builds in plain language",
+    "Clarifies that Chromatic is recovering from missing historic commits rather than ignoring git entirely"
+  ],
+  "success_criteria": [
+    "The response distinguishes replacement-build behavior from a normal direct baseline",
+    "The next step remains narrow"
+  ]
+}
