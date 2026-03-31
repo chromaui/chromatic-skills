@@ -1,7 +1,0 @@
-interface:
-  display_name: "Workflow Debug"
-  short_description: "Diagnose Chromatic git, baseline, PR, and merge-base workflow issues"
-  default_prompt: "Use $workflow-debug to diagnose this Chromatic workflow issue and return the standard diagnosis card."
-
-policy:
-  allow_implicit_invocation: false
