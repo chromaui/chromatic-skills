@@ -1,0 +1,9 @@
+interface:
+  display_name: 'Chromatic CI Setup'
+  short_description: 'Configure CI pipelines to run Chromatic visual tests'
+  icon_small: './assets/icon-small.svg'
+  icon_large: './assets/icon-large.png'
+  default_prompt: 'Use $chromatic-setup-ci to detect the CI provider and package manager, fetch the current Chromatic docs for that provider, and generate the CI configuration.'
+
+policy:
+  allow_implicit_invocation: false
