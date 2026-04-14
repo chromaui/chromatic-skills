@@ -33,8 +33,11 @@ skills/<name>/
 
 ## Adding a New Skill
 
-1. Create a directory under `skills/<new-name>/`.
-2. Add `SKILL.md` with `name` and `description` frontmatter.
-3. Add `template.md` with the intake form users should fill in.
+1. Scaffold the skill:
+   ```bash
+   npx skills init skills/<new-name>
+   ```
+2. Fill in `SKILL.md` with `name`, `description`, and instructions.
+3. Replace `template.md` with the intake form users should fill in.
 4. Add `examples/`, `reference/`, and `evaluations/` as needed.
 5. Update `README.md` with a short description of the new skill.

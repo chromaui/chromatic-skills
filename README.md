@@ -39,16 +39,3 @@ Preferred artifact: `<storybookUrl>.chromatic/preview-stats.trimmed.json`
 Installed skills do not fetch hosted URLs automatically. Share the URL with Chromatic support, or download the file manually and provide a local path or pasted contents.
 
 See `docs/metadata-artifacts.md` for enablement, URL patterns, and the manual handoff workflow.
-
-## Repository Layout
-
-```text
-skills/
-  monorepo-config/   SKILL.md, template.md, examples/, reference/, evaluations/
-  turbosnap-debug/   SKILL.md, template.md, examples/, reference/, evaluations/
-  workflow-debug/    SKILL.md, template.md, examples/, reference/, evaluations/
-docs/
-  metadata-artifacts.md
-```
-
-Each skill is self-contained. Edit files directly inside `skills/<name>/` — there is no build step.
