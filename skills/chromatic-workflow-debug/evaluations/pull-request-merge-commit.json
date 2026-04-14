@@ -1,0 +1,15 @@
+{
+  "name": "Pull request merge commit is compared instead of the head branch tip",
+  "skills": ["chromatic-workflow-debug"],
+  "query": "Our PR build is attached to the wrong SHA.",
+  "context": "The run is in GitHub Actions on `pull_request`, the user is not using the official action, and Chromatic appears to have associated the build with the merge commit SHA.",
+  "expected_behavior": [
+    "Chooses `WF_PR_EVENT_MISMATCH`",
+    "Explains ephemeral merge commits in plain language",
+    "Requests one exact workflow step or recommends the official action path"
+  ],
+  "success_criteria": [
+    "The response focuses on branch and SHA forwarding",
+    "The response stays customer-safe"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "CI cannot provide commit details cleanly to Chromatic",
+  "skills": ["chromatic-workflow-debug"],
+  "query": "Chromatic warned that it could not determine commit details.",
+  "context": "The user is on a custom CI integration and the build was created without enough SHA, branch, or slug information for future comparisons to behave predictably.",
+  "expected_behavior": [
+    "Chooses `WF_MISSING_COMMIT_DETAILS`",
+    "Explains why commit details matter for future baselines and comparisons",
+    "Requests one exact invocation snippet or forwarding change"
+  ],
+  "success_criteria": [
+    "The response explains the consequence on future comparisons",
+    "The response stays customer-safe"
+  ]
+}
