@@ -7,7 +7,7 @@ Always return this checklist after generating theme configuration, followed by c
 ## Theme Setup Checklist
 
 ### Files to create or update
-- [ ] `.storybook/main.ts` — register `@storybook/addon-themes`
+- [ ] `.storybook/main.ts` — register `@storybook/addon-themes` (if not already present)
 - [ ] `.storybook/preview.ts` — add decorator (`withThemeByClassName`, `withThemeByDataAttribute`, or custom) and optional global mode application
 - [ ] `.storybook/modes.ts` — theme mode definitions
 - [ ] `<path/to/story-file>` — per-component or per-story mode application (if targeted)

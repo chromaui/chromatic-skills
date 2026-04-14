@@ -33,7 +33,25 @@ Check `.storybook/preview.ts`, story files, and any `modes.ts`:
 
 Use the URLs in `reference/docs-map.md` and fetch with WebFetch. Use fetched content as the authoritative source — do not rely on remembered examples.
 
-### 3) Identify the theme library and configure the decorator
+### 3) Install `@storybook/addon-themes` (fresh setup only)
+
+If `@storybook/addon-themes` is not already installed, detect the package manager by checking for lock files (`bun.lockb`/`bun.lock` → bun, `pnpm-lock.yaml` → pnpm, `yarn.lock` → yarn, `package-lock.json` → npm) and use the matching install command:
+
+| Package manager | Command |
+|---|---|
+| npm | `npm install --save-dev @storybook/addon-themes` |
+| yarn | `yarn add --dev @storybook/addon-themes` |
+| pnpm | `pnpm add --save-dev @storybook/addon-themes` |
+| bun | `bun add --dev @storybook/addon-themes` |
+
+Then register it in `.storybook/main.ts`:
+```ts
+export default {
+  addons: ['@storybook/addon-themes'],
+};
+```
+
+### 4) Identify the theme library and configure the decorator
 
 Ask: _"Which theme library or approach does your project use? (e.g. Tailwind, Bootstrap, Material UI, styled-components, Emotion, or plain CSS classes)"_
 
@@ -139,3 +157,4 @@ Always render the checklist from `reference/output-contract.md`, then show the c
 
 - `reference/docs-map.md`
 - `reference/output-contract.md`
+- `../chromatic-setup-ci/reference/package-manager.md` — lock file detection and install commands per package manager
