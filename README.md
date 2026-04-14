@@ -20,6 +20,10 @@ Recommend and audit Chromatic configurations in Nx and Turborepo monorepos, incl
 
 Configure CI/CD pipelines to run Chromatic visual tests. Use when adding Chromatic to a new CI workflow or migrating an existing one.
 
+### `chromatic-viewports`
+
+Configure Chromatic to capture visual test snapshots at multiple viewport sizes using the Modes API. Use when setting up responsive visual testing, applying viewports to stories globally or per-component, or migrating from the legacy `chromatic.viewports` API.
+
 ## Install
 
 ```bash
@@ -33,6 +37,7 @@ npx skills add chromaui/chromatic-skills@chromatic-workflow-debug
 npx skills add chromaui/chromatic-skills@chromatic-turbosnap-debug
 npx skills add chromaui/chromatic-skills@chromatic-monorepo-config
 npx skills add chromaui/chromatic-skills@chromatic-setup-ci
+npx skills add chromaui/chromatic-skills@chromatic-viewports
 ```
 
 ## Hosted Metadata
