@@ -4,17 +4,21 @@ Canonical Chromatic workflows for git and baseline debugging, TurboSnap investig
 
 ## Skills
 
-### `workflow-debug`
+### `chromatic-workflow-debug`
 
 Diagnose Chromatic workflow issues involving git history, baselines, pull request event shape, merge queues, merge-base failures, replacement builds, and patch builds. Use when builds compare against the wrong baseline, an ancestor build is not found, or CI git context does not match Chromatic's expectations.
 
-### `turbosnap-debug`
+### `chromatic-turbosnap-debug`
 
 Diagnose TurboSnap behavior using logs, config, git context, hosted metadata references, and targeted trace commands. Use when TurboSnap is enabled but triggering full rebuilds, tracing too broadly, or skipping stories unexpectedly.
 
-### `monorepo-config`
+### `chromatic-monorepo-config`
 
 Recommend and audit Chromatic configurations in Nx and Turborepo monorepos, including topology choice (one project vs. many), `workingDir`, `buildCommand`, `storybookBaseDir`, `onlyChanged`, `externals`, and `untraced`.
+
+### `chromatic-setup-ci`
+
+Configure CI/CD pipelines to run Chromatic visual tests. Use when adding Chromatic to a new CI workflow or migrating an existing one.
 
 ## Install
 
@@ -25,9 +29,10 @@ npx skills add chromaui/chromatic-skills
 To install a single skill:
 
 ```bash
-npx skills add chromaui/chromatic-skills@workflow-debug
-npx skills add chromaui/chromatic-skills@turbosnap-debug
-npx skills add chromaui/chromatic-skills@monorepo-config
+npx skills add chromaui/chromatic-skills@chromatic-workflow-debug
+npx skills add chromaui/chromatic-skills@chromatic-turbosnap-debug
+npx skills add chromaui/chromatic-skills@chromatic-monorepo-config
+npx skills add chromaui/chromatic-skills@chromatic-setup-ci
 ```
 
 ## Hosted Metadata
