@@ -2,10 +2,8 @@
 
 ## Principles
 
-- Treat `sources/<family>/core` as the canonical source for any public installable skill.
-- Default to one adaptive public skill per family. Add wrappers only when the reasoning or install surface truly diverges.
-- Keep generated Codex skills self-contained in `skills/.curated`.
-- Keep new public families customer-safe end to end.
+- Each skill in `skills/` is the single source of truth for its workflow. Edit it directly — there is no build step.
+- Keep skills customer-safe end to end.
 - Ask for one artifact at a time in diagnostic workflows.
 - Prefer exact config and CI snippets in recommendation workflows when enough context is available.
 - Installed skills must not fetch remote content directly.
@@ -13,18 +11,33 @@
 - Hosted metadata URLs are human-facing artifacts only unless the user manually converts them into a local file path or pasted contents.
 - Separate the minimal technical fix from the safer recommended fix whenever `untraced`, `externals`, or similar suppression is involved.
 
-## Updating Skills
+## Skill Structure
 
-1. Edit `sources/<family>/**`.
-2. Run `./scripts/sync-skills.sh`.
-3. Run `./scripts/build-prompt-adapters.sh`.
-4. Run `./scripts/validate-skills.sh`.
-5. Review the generated diffs in `skills/.curated/**` and `prompts/**` before committing.
+```text
+skills/<name>/
+  SKILL.md          Main instructions and frontmatter (required)
+  template.md       Intake template for users to fill in
+  examples/         Example outputs showing expected format
+  reference/        Detailed reference docs loaded on demand
+  evaluations/      JSON test scenarios
+  agents/           openai.yaml for Codex UI metadata
+  assets/           Icons and visual assets
+```
 
-## Adding a New Skill Family
+## Updating a Skill
 
-1. Add canonical source content first under `sources/<family>/core`.
-2. Default to a core-only family. Add wrappers only if a separate installable is materially different in behavior, not just tone.
-3. Keep installable outputs self-contained.
-4. Add prompt adapters under `sources/<family>/prompts`.
-5. Update README and usage docs once the family is ready to share.
+1. Edit files directly in `skills/<name>/`.
+2. Keep `SKILL.md` under 500 lines. Move detailed content to `reference/`.
+3. If you change the intake workflow, update `template.md` to match.
+4. If you add a new reference file, link it from the `## References and examples` section in `SKILL.md`.
+
+## Adding a New Skill
+
+1. Scaffold the skill:
+   ```bash
+   npx skills init skills/<new-name>
+   ```
+2. Fill in `SKILL.md` with `name`, `description`, and instructions.
+3. Replace `template.md` with the intake form users should fill in.
+4. Add `examples/`, `reference/`, and `evaluations/` as needed.
+5. Update `README.md` with a short description of the new skill.
