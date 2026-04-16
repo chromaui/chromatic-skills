@@ -1,0 +1,15 @@
+{
+  "name": "Local Storybook is already broken before Chromatic verifies it",
+  "skills": ["chromatic-storybook-config"],
+  "query": "Chromatic says it cannot verify our Storybook build, and we are not sure if this is a Chromatic problem.",
+  "context": "The user confirms that `storybook dev` and the local Storybook build both fail before upload, with the same startup error visible locally.",
+  "expected_behavior": [
+    "Chooses `SB_CFG_LOCAL_BUILD_BROKEN`",
+    "States plainly that the breakpoint already exists in local Storybook before Chromatic runs",
+    "Focuses the next step on repairing the local Storybook surface rather than changing Chromatic settings"
+  ],
+  "success_criteria": [
+    "The response does not frame Chromatic as the primary cause",
+    "The response gives one exact next step"
+  ]
+}

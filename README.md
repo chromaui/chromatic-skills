@@ -1,6 +1,6 @@
 # Chromatic Skills
 
-Canonical Chromatic workflows for git and baseline debugging, TurboSnap investigations, and monorepo configuration guidance. Built on the [Agent Skills](https://agentskills.io) open standard — works with Claude Code, Codex, and any compatible AI tool.
+Canonical Chromatic workflows for git and baseline debugging, TurboSnap investigations, Storybook diagnosis, and monorepo configuration guidance. Built on the [Agent Skills](https://agentskills.io) open standard — works with Claude Code, Codex, and any compatible AI tool.
 
 ## Skills
 
@@ -11,6 +11,10 @@ Diagnose Chromatic workflow issues involving git history, baselines, pull reques
 ### `chromatic-turbosnap-debug`
 
 Diagnose TurboSnap behavior using logs, config, git context, hosted metadata references, and targeted trace commands. Use when TurboSnap is enabled but triggering full rebuilds, tracing too broadly, or skipping stories unexpectedly.
+
+### `chromatic-storybook-config`
+
+Diagnose Storybook configuration issues that block Chromatic or local Storybook, including missing stories, framework or builder mismatches, addon conflicts, preview errors, static asset path issues, and package version drift.
 
 ### `chromatic-monorepo-config`
 
@@ -35,6 +39,7 @@ To install a single skill:
 ```bash
 npx skills add chromaui/chromatic-skills@chromatic-workflow-debug
 npx skills add chromaui/chromatic-skills@chromatic-turbosnap-debug
+npx skills add chromaui/chromatic-skills@chromatic-storybook-config
 npx skills add chromaui/chromatic-skills@chromatic-monorepo-config
 npx skills add chromaui/chromatic-skills@chromatic-setup-ci
 npx skills add chromaui/chromatic-skills@chromatic-viewports
