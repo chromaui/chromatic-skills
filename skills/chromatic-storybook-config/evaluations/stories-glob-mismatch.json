@@ -1,0 +1,15 @@
+{
+  "name": "Stories exist but the configured glob misses them",
+  "skills": ["chromatic-storybook-config"],
+  "query": "Storybook says it found zero stories even though we have .stories.tsx files.",
+  "context": "The user shares one real story path and a main config whose stories glob only targets a different directory and file type.",
+  "expected_behavior": [
+    "Chooses `SB_CFG_STORIES_GLOB_MISMATCH`",
+    "Explains that Storybook is not scanning the file pattern that actually exists",
+    "Recommends the narrowest glob or path correction"
+  ],
+  "success_criteria": [
+    "The response does not drift into builder migration advice",
+    "The response gives one exact next step"
+  ]
+}
