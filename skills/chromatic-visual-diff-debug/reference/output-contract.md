@@ -18,6 +18,9 @@ Use this structure:
 - <signal 2>
 - <signal 3>
 
+## Source Notes
+- <local source file(s) consulted, or `None` if no source file was needed>
+
 ## Why It Is Happening
 <one short paragraph explaining why the evidence maps to this diagnosis>
 
@@ -51,6 +54,7 @@ When the issue is still ambiguous after one targeted follow-up, append:
 - Problem: <plain-language problem statement>
 - Affected story: <story name or `unknown`>
 - Evidence gathered: <bulleted list>
+- Source notes consulted: <local source file list or `None`>
 - Most likely diagnosis: <normalized code plus plain-language label>
 - Remaining unknown: <single biggest missing fact>
 ```

@@ -11,3 +11,7 @@ Please confirm whether the same issue appears in local Storybook. If it does, sa
 ## Minimal config snippet request
 
 If you already suspect globals, assets, or timing, please share the relevant story snippet plus any `.storybook/preview.*` parameters that affect rendering.
+
+## Troubleshooting artifact request
+
+If the issue is inconsistent across reruns or Chromatic already shows traces, please share the rerun build URL and any trace-viewer notes about failed resources, viewport metadata, or console errors.
