@@ -1,6 +1,6 @@
 {
   "name": "Sticky or fixed positioning behaves differently in isolated capture",
-  "skills": ["chromatic-visual-diff-debug"],
+  "skills": ["chromatic-troubleshoot-diff"],
   "query": "Our sticky footer is pinned in the wrong place and a fixed toolbar sometimes disappears in Chromatic.",
   "context": "The user says the story is rendered in isolation, the affected elements use `position: sticky` and `position: fixed`, and the surrounding wrapper layout differs from the app shell.",
   "expected_behavior": [

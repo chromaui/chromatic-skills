@@ -1,6 +1,6 @@
 {
   "name": "Viewport or globals mismatch changes the rendered state",
-  "skills": ["chromatic-visual-diff-debug"],
+  "skills": ["chromatic-troubleshoot-diff"],
   "query": "The story only shifts in Chromatic when it runs in dark mode on a narrower viewport.",
   "context": "The user shares that local Storybook looks correct in the default mode, but the Chromatic configuration adds different viewport and theme globals for the affected snapshot.",
   "expected_behavior": [

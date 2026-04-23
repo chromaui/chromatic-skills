@@ -1,6 +1,6 @@
-# Visual Diff Debug Evaluations
+# Troubleshoot Diff Evaluations
 
-These scenarios verify that the public visual-diff skill:
+These scenarios verify that the `chromatic-troubleshoot-diff` skill:
 - picks the right rendering-stability branch
 - separates local rendering issues from Chromatic-only drift
 - protects the expected-change boundary before stabilization advice

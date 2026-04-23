@@ -1,6 +1,6 @@
 {
   "name": "Issue already reproduces in local Storybook",
-  "skills": ["chromatic-visual-diff-debug"],
+  "skills": ["chromatic-troubleshoot-diff"],
   "query": "Chromatic captured the wrong state for our button story.",
   "context": "The user confirms the same incorrect state is visible in local Storybook before upload.",
   "expected_behavior": [

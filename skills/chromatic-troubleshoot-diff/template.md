@@ -1,4 +1,4 @@
-# Visual Diff Debug Intake
+# Troubleshoot Diff Intake
 
 ## Minimal customer request
 
