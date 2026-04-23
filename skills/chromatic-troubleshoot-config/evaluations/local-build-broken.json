@@ -1,6 +1,6 @@
 {
   "name": "Local Storybook is already broken before Chromatic verifies it",
-  "skills": ["chromatic-storybook-config"],
+  "skills": ["chromatic-troubleshoot-config"],
   "query": "Chromatic says it cannot verify our Storybook build, and we are not sure if this is a Chromatic problem.",
   "context": "The user confirms that `storybook dev` and the local Storybook build both fail before upload, with the same startup error visible locally.",
   "expected_behavior": [
