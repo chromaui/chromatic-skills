@@ -1,6 +1,6 @@
 # Chromatic Skills
 
-Canonical Chromatic workflows for git and baseline debugging, TurboSnap investigations, Storybook diagnosis, and monorepo configuration guidance. Built on the [Agent Skills](https://agentskills.io) open standard — works with Claude Code, Codex, and any compatible AI tool.
+Canonical Chromatic workflows for git and baseline debugging, TurboSnap investigations, Storybook and visual diff diagnosis, and monorepo configuration guidance. Built on the [Agent Skills](https://agentskills.io) open standard — works with Claude Code, Codex, and any compatible AI tool.
 
 ## Skills
 
