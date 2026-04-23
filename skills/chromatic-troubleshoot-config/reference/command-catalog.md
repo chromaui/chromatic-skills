@@ -1,31 +1,37 @@
-# Storybook Config Command Catalog
+# Troubleshoot Config Command Catalog
 
 Use these only when the repo is available and one targeted proof step will settle the next branch.
+
+Prefer portable shell tools here. Do not assume `rg` is installed in the user's environment.
 
 ## Repo probes
 
 ### Find Storybook config files
 
 ```bash
-rg --files .storybook
+find .storybook -type f
 ```
 
 ### Inspect story discovery, framework, and addon configuration
 
 ```bash
-rg -n "stories:|framework:|addons:|core:|builder:" .storybook
+grep -RInE "stories:|framework:|addons:|core:|builder:" .storybook
 ```
 
 ### List story files the repo actually contains
 
 ```bash
-rg --files -g "*.stories.*" -g "*.story.*" -g "*.mdx"
+find . -type f \
+  \( -name "*.stories.*" -o -name "*.story.*" -o -name "*.mdx" \) \
+  -not -path "*/node_modules/*" \
+  -not -path "*/dist/*" \
+  -not -path "*/build/*"
 ```
 
 ### Inspect Storybook and builder packages
 
 ```bash
-rg -n '"@storybook/|"storybook"|"vite"|"webpack"' package.json
+grep -nE '"(@storybook/|storybook|vite|webpack)' package.json
 ```
 
 ## Script guidance

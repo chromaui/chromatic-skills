@@ -33,6 +33,5 @@ Diagnose Storybook configuration problems that block Chromatic or local Storyboo
 - `reference/evidence-ladder.md`
 - `reference/command-catalog.md`
 - `reference/output-contract.md`
-- `reference/docs-map.md`
 - `template.md`
 - `evaluations/README.md`
