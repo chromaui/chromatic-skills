@@ -1,6 +1,6 @@
 {
   "name": "Stories exist but the configured glob misses them",
-  "skills": ["chromatic-storybook-config"],
+  "skills": ["chromatic-troubleshoot-config"],
   "query": "Storybook says it found zero stories even though we have .stories.tsx files.",
   "context": "The user shares one real story path and a main config whose stories glob only targets a different directory and file type.",
   "expected_behavior": [

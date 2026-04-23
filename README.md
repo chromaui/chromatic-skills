@@ -12,11 +12,7 @@ Diagnose Chromatic workflow issues involving git history, baselines, pull reques
 
 Diagnose TurboSnap behavior using logs, config, git context, hosted metadata references, and targeted trace commands. Use when TurboSnap is enabled but triggering full rebuilds, tracing too broadly, or skipping stories unexpectedly.
 
-### `chromatic-troubleshoot-diff`
-
-Diagnose unexpected Chromatic visual diffs, flaky snapshots, font or asset rendering drift, animation timing issues, and nondeterministic story output. Use when snapshots change unexpectedly or the same story behaves differently across runs.
-
-### `chromatic-storybook-config`
+### `chromatic-troubleshoot-config`
 
 Diagnose Storybook configuration issues that block Chromatic or local Storybook, including missing stories, framework or builder mismatches, addon conflicts, preview errors, static asset path issues, and package version drift.
 
@@ -43,8 +39,7 @@ To install a single skill:
 ```bash
 npx skills add chromaui/chromatic-skills@chromatic-workflow-debug
 npx skills add chromaui/chromatic-skills@chromatic-turbosnap-debug
-npx skills add chromaui/chromatic-skills@chromatic-troubleshoot-diff
-npx skills add chromaui/chromatic-skills@chromatic-storybook-config
+npx skills add chromaui/chromatic-skills@chromatic-troubleshoot-config
 npx skills add chromaui/chromatic-skills@chromatic-monorepo-config
 npx skills add chromaui/chromatic-skills@chromatic-setup-ci
 npx skills add chromaui/chromatic-skills@chromatic-viewports

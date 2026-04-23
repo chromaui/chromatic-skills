@@ -1,4 +1,4 @@
-# Storybook Config Intake
+# Troubleshoot Config Intake
 
 ## Minimal customer request
 
