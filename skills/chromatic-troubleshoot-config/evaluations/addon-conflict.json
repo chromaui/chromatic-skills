@@ -1,0 +1,15 @@
+{
+  "name": "Addon conflict breaks Storybook startup",
+  "skills": ["chromatic-troubleshoot-config"],
+  "query": "Storybook crashes during startup after we added another addon.",
+  "context": "The stack trace points to addon registration and the config shows overlapping addon setup with incompatible package versions.",
+  "expected_behavior": [
+    "Chooses `SB_CFG_ADDON_CONFLICT`",
+    "Explains that addon compatibility or duplicate setup is the most likely breakpoint",
+    "Recommends a narrow addon-level repair path"
+  ],
+  "success_criteria": [
+    "The response does not jump to full package rewrites",
+    "The response gives one exact next step"
+  ]
+}

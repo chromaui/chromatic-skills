@@ -1,0 +1,15 @@
+{
+  "name": "Framework and builder configuration do not match installed packages",
+  "skills": ["chromatic-troubleshoot-config"],
+  "query": "Our Storybook config keeps failing after we switched to Vite.",
+  "context": "The package list shows Vite-based Storybook packages, but the config still references webpack-specific builder settings.",
+  "expected_behavior": [
+    "Chooses `SB_CFG_FRAMEWORK_OR_BUILDER_MISMATCH`",
+    "Explains that the config and installed runtime are out of sync",
+    "Recommends aligning the framework or builder surface before changing unrelated files"
+  ],
+  "success_criteria": [
+    "The response does not mix Vite and Webpack guidance in one fix path",
+    "The response focuses on the config mismatch first"
+  ]
+}
