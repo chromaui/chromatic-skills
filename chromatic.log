@@ -1,0 +1,69 @@
+11:02:15.083 Chromatic CLI v16.3.0
+             https://www.chromatic.com/docs/cli 
+ 
+11:02:15.237 Authenticating with Chromatic 
+11:02:15.238     â†’ Connecting to https://index.chromatic.com
+11:02:15.429 Authenticated with Chromatic
+                 â†’ Using project token '****************2faf'
+11:02:15.431 Retrieving git information
+
+11:02:17.406 â„¹ Missing commit detected
+             When detecting git changes for TurboSnap, we couldn't find the commit (41390b0) for the most recent build (#13188).
+             To avoid re-snapshotting stories we know haven't changed, we copied from the most recent build (#13184) that did have a commit (ca6ef2a) instead.
+11:02:17.407 Found 17 changed files:
+               .github/workflows/ci.yml
+               packages/components/README.md
+               .changeset/hungry-singers-hear.md
+               .changeset/remove-people-full-permission.md
+               .github/scripts/run-visual-tests-state.mts
+               .github/scripts/run-visual-tests-state.test.mts
+               .github/scripts/run-visual-tests.mts
+               .github/scripts/vitest.config.mts
+               package.json
+               packages/components/src/components/Calendar/QuickRanges.tsx
+               packages/components/src/components/DateRangeNavigator/DateRangeNavigator.stories.tsx
+               packages/components/src/components/DateRangeNavigator/date-range-utils.test.ts
+               packages/components/src/components/DateRangeNavigator/date-range-utils.ts
+               packages/components/src/components/DateRangeNavigator/index.tsx
+               packages/components/src/components/DateRangeNavigator/month-select.tsx
+               packages/components/src/components/DateRangeNavigator/use-min-max-bounds.ts
+               packages/next/src/server/api/permissions.ts
+11:02:17.413 Retrieved git information
+                 â†’ Commit 'b0102d8' on branch 'chromatic-debugging'; found 2 parent builds and 17 changed files
+11:02:17.413 Collecting Storybook metadata
+11:02:17.418 Collected Storybook metadata
+                 â†’ Storybook 10.3.3; using the @storybook/builder-vite builder (undefined); no supported addons found
+11:02:17.418 Initializing build
+11:02:17.869 Initialized build
+                 â†’ Build 13202 initialized
+11:02:17.870 Prepare your built Storybook
+11:02:17.870     â†’ Validating Storybook files
+11:02:17.878 Retrieving story files affected by recent changes
+11:02:17.878     â†’ Traversing dependencies for 17 files that changed since the last build
+11:02:18.247 Found 0 changed dependencies
+11:02:18.346 âš  TurboSnap disabled due to file change
+             Found a Storybook config change in packages/components/.storybook/ConfigurationDecorator.tsx
+             A full build is required because this file cannot be linked to any specific stories.
+             â„¹ Read more at https://www.chromatic.com/docs/turbosnap#how-it-works
+11:02:18.347 TurboSnap disabled
+11:02:18.348     â†’ Found a change in packages/components/.storybook/ConfigurationDecorator.tsx
+11:02:18.348 Prepare your built Storybook
+11:02:18.348     â†’ Calculating file hashes
+11:02:18.387 Preparation complete
+                 â†’ Storybook files validated and prepared for upload
+11:02:18.388 Publishing your built Storybook
+11:02:18.388     â†’ Starting publish
+11:02:18.700     â†’ [                    ] 0%
+11:02:22.301 Publishing your built Storybook
+11:02:22.302     â†’ Finalizing upload
+11:02:22.489 Publish complete in 4 seconds
+                 â†’ Uploaded 127 files (7.61 MB), skipped 226 files
+11:02:22.490 Verifying your Storybook
+11:02:22.490     â†’ This may take a few minutes
+11:02:22.491     â†’ [*                   ]
+11:02:28.314 âœ” Storybook published
+             We found 98 components with 732 stories.
+             â„¹ View your Storybook at https://6554c1a65d60e17c229629f2-psqyeshpwa.chromatic.com/
+11:02:28.315 Started build 13202
+                 â†’ View build details at https://www.chromatic.com/build?appId=6554c1a65d60e17c229629f2&number=13202
+11:02:28.324 â„¹ Wrote Chromatic diagnostics report to chromatic-diagnostics.json
