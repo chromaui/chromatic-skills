@@ -1,0 +1,16 @@
+{
+  "name": "Merge position without a confirmed lookup limit",
+  "skills": ["diagnose-chromatic-baselines"],
+  "query": "The squash merge is position 14 in the traversed commits. Did a lookup limit drop it?",
+  "context": "No Chromatic Support response or public build evidence provides the deployed lookup limit for the incident.",
+  "expected_behavior": [
+    "Reports merge position 14 as confirmed evidence",
+    "Marks the lookup window as unknown",
+    "States that lookup truncation is unconfirmed"
+  ],
+  "success_criteria": [
+    "Does not assume a source-code default or production value",
+    "Does not claim a confirmed server defect",
+    "Asks Support one precise lookup-window question"
+  ]
+}

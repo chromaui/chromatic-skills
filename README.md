@@ -8,6 +8,10 @@ Canonical Chromatic workflows for git and baseline debugging, TurboSnap investig
 
 Diagnose Chromatic workflow issues involving git history, baselines, pull request event shape, merge queues, merge-base failures, replacement builds, and patch builds. Use when builds compare against the wrong baseline, an ancestor build is not found, or CI git context does not match Chromatic's expectations.
 
+### `diagnose-chromatic-baselines`
+
+Trace why an accepted visual change did not carry forward using customer-owned build records, CLI logs, and Git history. The workflow separates confirmed ancestry evidence from questions that require Chromatic Support.
+
 ### `chromatic-turbosnap-debug`
 
 Diagnose TurboSnap behavior using logs, config, git context, hosted metadata references, and targeted trace commands. Use when TurboSnap is enabled but triggering full rebuilds, tracing too broadly, or skipping stories unexpectedly.
@@ -38,6 +42,7 @@ To install a single skill:
 
 ```bash
 npx skills add chromaui/chromatic-skills@chromatic-workflow-debug
+npx skills add chromaui/chromatic-skills@diagnose-chromatic-baselines
 npx skills add chromaui/chromatic-skills@chromatic-turbosnap-debug
 npx skills add chromaui/chromatic-skills@chromatic-troubleshoot-config
 npx skills add chromaui/chromatic-skills@chromatic-monorepo-config

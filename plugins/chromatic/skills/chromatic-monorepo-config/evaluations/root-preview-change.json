@@ -1,0 +1,15 @@
+{
+  "name": "Root preview wrapper changes should be treated as broad on a shared Storybook",
+  "skills": ["chromatic-monorepo-config"],
+  "query": "How should we handle changes in our root preview file?",
+  "context": "The repo uses one shared Storybook and the root preview file provides decorators for many packages.",
+  "expected_behavior": [
+    "Explains that this file is broad by design",
+    "Prefers `externals` or a full rebuild interpretation over risky untraced guidance",
+    "Keeps the recommendation aligned with the chosen topology"
+  ],
+  "success_criteria": [
+    "The response treats the preview file as a meaningful review-surface input",
+    "The response stays honest about rebuild scope"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Current CLI same-commit rebuild",
+  "skills": ["diagnose-chromatic-baselines"],
+  "query": "An accepted baseline reappeared on this rebuild. What happened?",
+  "context": "The affected log includes `git info` with commit cccccccccccccccccccccccccccccccccccccccc and `App firstBuild: { committedAt: 1788000000000 }, lastBuild: { commit: 'cccccccccccccccccccccccccccccccccccccccc', committedAt: 1788361200000 }`.",
+  "expected_behavior": [
+    "Classifies the log as a same-commit rebuild",
+    "Explains that the rebuild inherited the first build's ancestry decision",
+    "Requests the first build on the same commit as the single next artifact"
+  ],
+  "success_criteria": [
+    "Does not diagnose the rebuild as a fresh ancestry calculation",
+    "Does not request internal Chromatic access",
+    "Does not propose unrelated clone or Storybook changes"
+  ]
+}

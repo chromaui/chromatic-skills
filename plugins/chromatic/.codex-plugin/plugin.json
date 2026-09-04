@@ -1,0 +1,42 @@
+{
+  "name": "chromatic",
+  "version": "0.1.0",
+  "description": "Chromatic workflows for CI setup, visual diff diagnosis, TurboSnap, monorepos, themes, and viewports.",
+  "author": {
+    "name": "Chromatic",
+    "url": "https://www.chromatic.com/"
+  },
+  "homepage": "https://www.chromatic.com/docs/",
+  "repository": "https://github.com/chromaui/chromatic-skills",
+  "license": "MIT",
+  "keywords": [
+    "chromatic",
+    "storybook",
+    "visual-testing",
+    "turbosnap",
+    "ci"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Chromatic",
+    "shortDescription": "Debug and configure Chromatic workflows",
+    "longDescription": "Use Chromatic skills for CI setup, monorepo configuration, TurboSnap diagnosis, visual diff troubleshooting, themes, viewports, and workflow debugging.",
+    "developerName": "Chromatic",
+    "category": "Chromatic",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://www.chromatic.com/",
+    "defaultPrompt": [
+      "Diagnose this Chromatic build or workflow issue.",
+      "Configure Chromatic for this CI or monorepo setup.",
+      "Troubleshoot this Chromatic visual diff."
+    ],
+    "brandColor": "#FC521F",
+    "composerIcon": "./assets/icon-large.png",
+    "logo": "./assets/icon-large.png",
+    "screenshots": []
+  }
+}

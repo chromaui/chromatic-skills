@@ -1,0 +1,9 @@
+interface:
+  display_name: "Troubleshoot Config"
+  short_description: "Diagnose Storybook configuration issues that block Chromatic"
+  icon_small: './assets/icon-small.svg'
+  icon_large: './assets/icon-large.png'
+  default_prompt: "Use $chromatic-troubleshoot-config to diagnose this Storybook configuration issue and return the standard diagnosis card."
+
+policy:
+  allow_implicit_invocation: false
