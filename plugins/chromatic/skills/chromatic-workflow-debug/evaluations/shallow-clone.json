@@ -1,0 +1,15 @@
+{
+  "name": "Shallow checkout blocks baseline selection",
+  "skills": ["chromatic-workflow-debug"],
+  "query": "Chromatic says it only found one commit and our baselines look wrong.",
+  "context": "The user is running in GitHub Actions and actions/checkout is using the default fetch depth. They pasted the 'Found only one commit' message.",
+  "expected_behavior": [
+    "Chooses `WF_INVALID_GIT_HISTORY`",
+    "Explains that the current run does not have enough git history for safe baseline selection",
+    "Recommends changing the checkout depth before requesting other artifacts"
+  ],
+  "success_criteria": [
+    "The response recommends `fetch-depth: 0` or equivalent full-history checkout",
+    "The response does not drift into Storybook or monorepo configuration"
+  ]
+}

@@ -4,3 +4,6 @@
 *.bak
 __pycache__/
 .claude/settings.local.json
+ts-debug/
+skills/qbr-summary/
+skills/discuss/

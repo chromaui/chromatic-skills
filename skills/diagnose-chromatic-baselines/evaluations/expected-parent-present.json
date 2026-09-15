@@ -1,0 +1,16 @@
+{
+  "name": "Expected parent was submitted",
+  "skills": ["diagnose-chromatic-baselines"],
+  "query": "Chromatic still showed the wrong baseline even though the accepted PR commit is in parentCommits.",
+  "context": "The accepted test and mode are verified. The first affected build's CLI log lists the accepted PR commit in `Found parentCommits`.",
+  "expected_behavior": [
+    "Confirms that the CLI ancestry handoff included the expected commit",
+    "Does not claim that this proves the server selected the correct test baseline",
+    "Produces a Support question about exact baseline selection"
+  ],
+  "success_criteria": [
+    "Stops at the external access boundary",
+    "Does not mention internal field names or APIs",
+    "Includes one customer action and one Support action"
+  ]
+}
