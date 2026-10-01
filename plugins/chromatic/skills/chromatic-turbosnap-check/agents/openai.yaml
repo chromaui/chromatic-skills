@@ -1,0 +1,7 @@
+interface:
+  display_name: "Check TurboSnap Changes"
+  short_description: "Check local changes for TurboSnap dependency risks"
+  default_prompt: "Use $chromatic-turbosnap-check to check my changes for TurboSnap risks before pushing, using fresh Storybook stats."
+
+policy:
+  allow_implicit_invocation: true

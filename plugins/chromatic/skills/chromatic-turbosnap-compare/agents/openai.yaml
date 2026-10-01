@@ -1,0 +1,4 @@
+interface:
+  display_name: "Compare TurboSnap Versions"
+  short_description: "Trace v1/v2 differences to manifest hash inputs"
+  default_prompt: "Use $chromatic-turbosnap-compare to explain why these two builds disagree about a preview configuration change."

@@ -1,7 +1,7 @@
 {
-  "name": "chromatic",
+  "name": "chromatic-skills",
   "interface": {
-    "displayName": "Chromatic"
+    "displayName": "Chromatic Skills"
   },
   "plugins": [
     {

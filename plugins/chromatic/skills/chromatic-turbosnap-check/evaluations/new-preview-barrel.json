@@ -1,0 +1,12 @@
+{
+  "name": "new-preview-barrel",
+  "skills": [
+    "chromatic-turbosnap-check"
+  ],
+  "query": "A developer added a barrel import to preview. Check changes before pushing.",
+  "expected_behavior": [
+    "Build fresh stats and compare preview runtime imports using Git source history",
+    "Report review evidence and the current footprint, not an invented before/after delta",
+    "Do not edit source or tracing exclusions"
+  ]
+}

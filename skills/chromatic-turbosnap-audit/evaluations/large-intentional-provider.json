@@ -1,0 +1,12 @@
+{
+  "name": "large-intentional-provider",
+  "skills": [
+    "chromatic-turbosnap-audit"
+  ],
+  "query": "Audit stats where a global theme provider reaches many modules.",
+  "expected_behavior": [
+    "Measure and rank the current footprint",
+    "Attribute CLI bails only to exact hypothetical probe inputs",
+    "Do not call a large count a regression or automatically propose exclusions"
+  ]
+}

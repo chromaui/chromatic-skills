@@ -1,0 +1,12 @@
+{
+  "name": "cyclic-imports",
+  "skills": [
+    "chromatic-turbosnap-audit"
+  ],
+  "query": "Audit a cyclic application graph without a dependency path into preview.",
+  "expected_behavior": [
+    "Do not diagnose a bailout from the cycle alone",
+    "Use the native trace and actual dependency path for any bail claim",
+    "Keep findings separate from optional recommendations"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Explicit empty submitted-parent list",
+  "skills": ["diagnose-chromatic-baselines"],
+  "query": "The first main build lost an accepted PR baseline.",
+  "context": "The CLI log contains `Found parentCommits:` with no commits after it. The accepted PR commit is aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa. The build is not a same-commit rebuild.",
+  "expected_behavior": [
+    "Treats the observed empty parent line as evidence that the expected parent was absent",
+    "Uses the merge method and direct Git ancestry result to choose the next branch",
+    "Asks for only one missing artifact when merge evidence is unavailable"
+  ],
+  "success_criteria": [
+    "Does not claim the parent line is missing",
+    "Does not invent a provider or lookup-limit cause",
+    "Keeps the response customer-safe"
+  ]
+}
