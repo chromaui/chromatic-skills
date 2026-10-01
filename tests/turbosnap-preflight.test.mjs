@@ -6,7 +6,7 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { check } from '../skills/chromatic-turbosnap-check/scripts/preflight.mjs';
-import { graphFromStats, configPaths, reachable, importSpecifiers, changedRuntimeImports, parseTrace, normalizeFile, exitForStatus, hasRuntimeReexports } from '../skills/chromatic-turbosnap-check/scripts/preflight-lib.mjs';
+import { graphFromStats, configPaths, reachable, importSpecifiers, changedRuntimeImports, parseTrace, normalizeFile, exitForStatus, hasRuntimeReexports, isSupportedCliVersion } from '../skills/chromatic-turbosnap-check/scripts/preflight-lib.mjs';
 
 const module = (name, parents = [], extra = {}) => ({ id: name, name, reasons: parents.map((moduleName) => ({ moduleName })), ...extra });
 const stats = (bail = false) => ({ modules: [
@@ -107,7 +107,16 @@ test('rejects escaping changed paths', () => {
   assert.equal(normalizeFile('./src/has space.js'), 'src/has space.js');
 });
 
-function fixture(t, { bail = false, buildMode = 'success', realCli = false } = {}) {
+test('CLI compatibility accepts stable 18.x SemVer only', () => {
+  for (const version of ['18.0.0', '18.9.5', '18.9.6', '18.10.0', '18.99.99', '18.9.6+build.1']) {
+    assert.equal(isSupportedCliVersion(version), true, version);
+  }
+  for (const version of ['17.9.6', '19.0.0', '180.9.6', '18.9.6-canary.1', '18.9.6-rc.1+build.1', '18', '18.9', '18.09.6', '018.9.6', '18.9.6+', 'v18.9.6', '1.22.22\n18.9.6', 'chromatic@latest', '', null]) {
+    assert.equal(isSupportedCliVersion(version), false, String(version));
+  }
+});
+
+function fixture(t, { bail = false, buildMode = 'success', realCli = false, cliVersion = '18.9.5' } = {}) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'turbosnap-test-'));
   const repo = path.join(dir, 'repo'); const out = path.join(dir, 'out'); fs.mkdirSync(repo);
   t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
@@ -118,7 +127,7 @@ function fixture(t, { bail = false, buildMode = 'success', realCli = false } = {
   write('package.json', '{"private":true}\n'); write('.gitignore', 'ignored/\n');
   git('add', '.'); git('commit', '-m', 'baseline');
   const cliPath = path.join(dir, 'cli.mjs');
-  fs.writeFileSync(cliPath, `if(process.argv.includes('--version')) console.log('18.9.5'); else console.log(${JSON.stringify(`Traced 1 changed file to 1 affected story files:\n${bail ? 'TurboSnap disabled due to file change\nFound a Storybook config change in .storybook/preview.js\n' : ''}`)});`);
+  fs.writeFileSync(cliPath, `if(process.argv.includes('--version')) console.log(${JSON.stringify(cliVersion)}); else console.log(${JSON.stringify(`Traced 1 changed file to 1 affected story files:\n${bail ? 'TurboSnap disabled due to file change\nFound a Storybook config change in .storybook/preview.js\n' : ''}`)});`);
   const statsPath = path.join(dir, 'input-stats.json'); fs.writeFileSync(statsPath, JSON.stringify(stats(bail)));
   const builder = path.join(dir, 'builder.mjs');
   fs.writeFileSync(builder, `import fs from 'node:fs';import path from 'node:path';
@@ -131,6 +140,29 @@ function fixture(t, { bail = false, buildMode = 'success', realCli = false } = {
   fs.writeFileSync(configPath, JSON.stringify(config));
   return { dir, repo, out, write, git, statsPath, configPath, config, options: { repo, out, config: configPath } };
 }
+
+test('minor and patch updates within major 18 run and retain the exact version', (t) => {
+  for (const cliVersion of ['18.0.0', '18.9.6', '18.10.0']) {
+    const f = fixture(t, { cliVersion });
+    f.write('src/Button.js', 'export const value = 2;\n');
+    const result = check(f.options);
+    assert.equal(result.status, 'clear', result.error);
+    assert.equal(result.chromaticVersion, cliVersion);
+    assert.equal(result.build.status, 'passed');
+  }
+});
+
+test('unsupported versions fail before building even with advisory exit policy', (t) => {
+  for (const cliVersion of ['17.9.6', '19.0.0', '18.9.6-canary.1', 'yarn run v1.22.22\n18.9.6']) {
+    const f = fixture(t, { cliVersion });
+    const result = check({ ...f.options, 'fail-on': 'never' });
+    assert.equal(result.status, 'unable-to-verify');
+    assert.equal(result.exitCode, 2);
+    assert.equal(result.build.status, 'pending');
+    assert.equal(fs.existsSync(path.join(f.out, 'storybook')), false);
+    assert.match(result.error, /supports stable Chromatic 18\.x/);
+  }
+});
 
 test('example CLI argv forwards version and trace arguments to the installed binary', (t) => {
   const f = fixture(t);
@@ -232,9 +264,11 @@ test('nonempty evidence directories are never overwritten', (t) => {
 });
 
 for (const bail of [false, true]) {
-  test(`real Chromatic 18.9.5 trace: ${bail ? 'configuration bail' : 'isolated change'}`, { skip: !process.env.CHROMATIC_TEST_BIN }, (t) => {
+  test(`real installed Chromatic trace: ${bail ? 'configuration bail' : 'isolated change'}`, { skip: !process.env.CHROMATIC_TEST_BIN }, (t) => {
     const f = fixture(t, { bail, realCli: true }); f.write('src/Button.js', 'export const value = 2;');
     const result = check(f.options); assert.equal(result.status, bail ? 'bail' : 'clear', result.error);
+    assert.equal(isSupportedCliVersion(result.chromaticVersion), true);
+    t.diagnostic(`Chromatic ${result.chromaticVersion}`);
   });
 }
 
@@ -262,8 +296,8 @@ test('artifact audit does not inspect unrelated checkout source', (t) => {
   assert.equal(result.build.status, 'not-run');
 });
 test('audit fails explicitly if preview coverage or native probe output is unavailable', (t) => {
-  const f = fixture(t, { bail: true });
-  fs.writeFileSync(path.join(f.dir, 'cli.mjs'), `console.log(process.argv.includes('--version') ? '18.9.5' : 'unknown output');`);
+  const f = fixture(t, { bail: true, cliVersion: '18.9.6' });
+  fs.writeFileSync(path.join(f.dir, 'cli.mjs'), `console.log(process.argv.includes('--version') ? '18.9.6' : 'unknown output');`);
   const failed = check({ ...f.options, audit: true });
   assert.equal(failed.status, 'unable-to-verify');
   assert.equal(failed.traces[0].files[0], 'src/Button.js');

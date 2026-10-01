@@ -1,6 +1,8 @@
 # TurboSnap audit and check CLI
 
-Both skills bundle the same checker, so either can be installed alone. Node.js 20+, Git with a committed HEAD, a working Storybook installation, and an already installed Chromatic 18.9.5 CLI are required. This version is pinned because native trace output is parsed. Report any difference from the project's CI CLI. The checker does not upload, authenticate to Chromatic, capture screenshots, or download dependencies.
+Both skills bundle the same checker, so either can be installed alone. Node.js 20+, Git with a committed HEAD, a working Storybook installation, and an already installed stable Chromatic 18.x CLI are required. Minor and patch releases within major 18 are accepted, including 18.9.6; prereleases and other majors require separate compatibility validation. The exact CLI version is recorded in the report. Unrecognized native trace output still returns `unable-to-verify`, even from an accepted version. Report any difference from the project's CI CLI. The checker does not upload, authenticate to Chromatic, capture screenshots, or download dependencies.
+
+Prefer the newest reviewed stable release within major 18. A dependency range such as `^18.0.0` permits those updates; the committed lockfile selects the exact package and dependency versions used for a run. Use the repository's frozen/immutable lockfile installation in CI, and update dependencies deliberately through the team's review process. Do not resolve or execute `chromatic@latest` during a diagnostic run: `latest` is mutable and can move to another major. A major-version range is a compatibility boundary, not protection against a compromised patch; a lockfile provides repeatability, not proof that the selected code is safe. Review release provenance and dependency changes when upgrading, and add newer majors after validating their tracing behavior.
 
 ## Configure once per Storybook
 

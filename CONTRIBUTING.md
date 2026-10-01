@@ -67,4 +67,4 @@ python3 -m unittest discover -s tests -v
 
 CI runs the same checks for pull requests and pushes to `main`.
 
-The Node tests require Node 20 or newer. Set `CHROMATIC_TEST_BIN` to an installed Chromatic 18.9.5 `dist/bin.cjs` to enable real CLI integration tests; fixture tests run offline.
+The Node tests require Node 20 or newer. Set `CHROMATIC_TEST_BIN` to an installed stable Chromatic 18.x `dist/bin.cjs` to enable real CLI integration tests; fixture tests run offline. The checker accepts stable minor and patch releases within major 18 and records the exact version used. Before broadening to another major, validate both isolated-change and configuration-bail tracing. Prefer the newest reviewed 18.x release, installed through a committed lockfile; diagnostic runs must not download a mutable `chromatic@latest` package.

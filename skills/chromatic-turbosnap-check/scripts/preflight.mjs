@@ -5,7 +5,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { RELEASE, TESTED_CLI, slash, inside, normalizeFile, isPackageFile, isSource, isPreview, graphFromStats, reachable, configPaths, changedRuntimeImports, resolveImport, parseTrace, exitForStatus, hasRuntimeReexports } from './preflight-lib.mjs';
+import { RELEASE, SUPPORTED_CLI_MAJOR, isSupportedCliVersion, slash, inside, normalizeFile, isPackageFile, isSource, isPreview, graphFromStats, reachable, configPaths, changedRuntimeImports, resolveImport, parseTrace, exitForStatus, hasRuntimeReexports } from './preflight-lib.mjs';
 
 import { auditGraph } from './audit.mjs';
 
@@ -141,7 +141,7 @@ export function check(options) {
     const before = fingerprint(repo, excluded);
     const version = run([...cli, '--version'], repo).stdout.trim();
     result.chromaticVersion = version;
-    if (version !== TESTED_CLI) throw new Error(`This release validates Chromatic ${TESTED_CLI}; command resolved to ${version}. Pin the configured CLI to ${TESTED_CLI}.`);
+    if (!isSupportedCliVersion(version)) throw new Error(`This release supports stable Chromatic ${SUPPORTED_CLI_MAJOR}.x; command resolved to ${version}. Use an installed, lockfile-managed ${SUPPORTED_CLI_MAJOR}.x CLI. Other majors and prereleases require compatibility validation.`);
     let statsPath;
     if (options.stats) {
       statsPath = path.resolve(options.stats);

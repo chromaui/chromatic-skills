@@ -2,7 +2,15 @@ import path from 'node:path';
 import babelParser from './vendor/babel-parser.cjs';
 
 export const RELEASE = '0.2.0';
-export const TESTED_CLI = '18.9.5';
+export const SUPPORTED_CLI_MAJOR = 18;
+
+export function isSupportedCliVersion(version) {
+  if (typeof version !== 'string') return false;
+  // Accept stable SemVer releases (including build metadata), not prereleases
+  // or wrapper output such as a package manager's banner/version.
+  const match = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?$/.exec(version);
+  return match !== null && match[1] === String(SUPPORTED_CLI_MAJOR);
+}
 export const slash = (value) => value.replaceAll('\\', '/');
 export const inside = (file, dir) => file === dir || file.startsWith(`${dir}/`);
 export const isPackageFile = (file) => /(^|\/)(package\.json|yarn\.lock|package-lock\.json|pnpm-lock\.yaml|npm-shrinkwrap\.json|bun\.lockb?)$/.test(file);
