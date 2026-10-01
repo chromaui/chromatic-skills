@@ -1,0 +1,12 @@
+{
+  "name": "hook-advisory",
+  "skills": [
+    "chromatic-turbosnap-check"
+  ],
+  "query": "A hook with --fail-on bail exits zero but report.json says review.",
+  "expected_behavior": [
+    "Preserve and explain the review findings",
+    "Explain that exit policy changes enforcement, not the report status",
+    "Do not describe this as a clear check"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "One manifest cannot prove a hash delta",
+  "skills": ["chromatic-turbosnap-compare"],
+  "query": "This manifest says preview. Tell me which configuration file changed.",
+  "context": "Only a current manifest and a log are supplied. None of the logged changed files is in attribution.previewSubtree. The log generates v2 metadata and then finishes a v1 run.",
+  "expected_behavior": [
+    "Reports that current Git changes do not intersect preview attribution",
+    "Distinguishes background v2 metadata from the observed v1 decision",
+    "Requests the relevant baseline manifest without inventing a changed file",
+    "Does not infer a bug from a hash reconstructed without synthetic nodes"
+  ]
+}

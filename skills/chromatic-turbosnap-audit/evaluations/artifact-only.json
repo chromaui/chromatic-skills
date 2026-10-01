@@ -1,0 +1,12 @@
+{
+  "name": "artifact-only",
+  "skills": [
+    "chromatic-turbosnap-audit"
+  ],
+  "query": "Audit supplied stats with no matching customer source checkout.",
+  "expected_behavior": [
+    "Use artifact mode and qualify provenance",
+    "Do not inspect unrelated local preview source as customer evidence",
+    "Report unresolved imports and missing barrel-source evidence"
+  ]
+}

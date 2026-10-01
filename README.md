@@ -16,9 +16,25 @@ Trace why an accepted visual change did not carry forward using customer-owned b
 
 Diagnose TurboSnap behavior using logs, config, git context, hosted metadata references, and targeted trace commands. Use when TurboSnap is enabled but triggering full rebuilds, tracing too broadly, or skipping stories unexpectedly.
 
+### `chromatic-turbosnap-audit`
+
+Audit current preview imports, barrel candidates, configuration modules, and dependency footprints. Probe hypothetical changed inputs with the official CLI, then report evidence and supported recommendations without modifying code or tracing rules.
+
+### `chromatic-turbosnap-check`
+
+Check Git changes before pushing using one fresh Storybook build. Flag new preview imports and configuration modules, trace application changes for bails, and use explicit exit policies for optional local hooks. Both TurboSnap prevention skills bundle the same runtime and can be installed separately.
+
+### `chromatic-turbosnap-compare`
+
+Compare TurboSnap 1 and 2 using local logs, manifests, and stats. Trace preview hash changes to specific inputs, including content changes absent from Git's changed-file list.
+
 ### `chromatic-troubleshoot-config`
 
 Diagnose Storybook configuration issues that block Chromatic or local Storybook, including missing stories, framework or builder mismatches, addon conflicts, preview errors, static asset path issues, and package version drift.
+
+### `chromatic-troubleshoot-diff`
+
+Diagnose visual differences between local Storybook and Chromatic, including font and resource loading, viewport globals, nondeterministic data, animation timing, and fixed or sticky positioning.
 
 ### `chromatic-monorepo-config`
 
@@ -32,6 +48,10 @@ Configure CI/CD pipelines to run Chromatic visual tests. Use when adding Chromat
 
 Configure Chromatic to capture visual test snapshots at multiple viewport sizes using the Modes API. Use when setting up responsive visual testing, applying viewports to stories globally or per-component, or migrating from the legacy `chromatic.viewports` API.
 
+### `chromatic-themes`
+
+Configure Chromatic to capture visual snapshots across multiple themes with Storybook globals, the Modes API, and supported theme addons or decorators.
+
 ## Install
 
 ```bash
@@ -44,10 +64,15 @@ To install a single skill:
 npx skills add chromaui/chromatic-skills@chromatic-workflow-debug
 npx skills add chromaui/chromatic-skills@diagnose-chromatic-baselines
 npx skills add chromaui/chromatic-skills@chromatic-turbosnap-debug
+npx skills add chromaui/chromatic-skills@chromatic-turbosnap-audit
+npx skills add chromaui/chromatic-skills@chromatic-turbosnap-check
+npx skills add chromaui/chromatic-skills@chromatic-turbosnap-compare
 npx skills add chromaui/chromatic-skills@chromatic-troubleshoot-config
+npx skills add chromaui/chromatic-skills@chromatic-troubleshoot-diff
 npx skills add chromaui/chromatic-skills@chromatic-monorepo-config
 npx skills add chromaui/chromatic-skills@chromatic-setup-ci
 npx skills add chromaui/chromatic-skills@chromatic-viewports
+npx skills add chromaui/chromatic-skills@chromatic-themes
 ```
 
 ## Hosted Metadata

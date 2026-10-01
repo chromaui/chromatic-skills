@@ -1,7 +1,7 @@
 {
   "name": "chromatic",
-  "version": "0.1.0",
-  "description": "Chromatic workflows for CI setup, visual diff diagnosis, TurboSnap, monorepos, themes, and viewports.",
+  "version": "0.2.0",
+  "description": "Chromatic workflows for CI setup, baseline ancestry and visual diff diagnosis, TurboSnap audits and preventive checks, monorepos, themes, and viewports.",
   "author": {
     "name": "Chromatic",
     "url": "https://www.chromatic.com/"
@@ -20,7 +20,7 @@
   "interface": {
     "displayName": "Chromatic",
     "shortDescription": "Debug and configure Chromatic workflows",
-    "longDescription": "Use Chromatic skills for CI setup, monorepo configuration, TurboSnap diagnosis, visual diff troubleshooting, themes, viewports, and workflow debugging.",
+    "longDescription": "Use Chromatic skills for CI setup, baseline ancestry, monorepo configuration, TurboSnap audits, preventive change checks, and diagnosis, visual diff troubleshooting, themes, viewports, and workflow debugging.",
     "developerName": "Chromatic",
     "category": "Chromatic",
     "capabilities": [
@@ -31,8 +31,11 @@
     "websiteURL": "https://www.chromatic.com/",
     "defaultPrompt": [
       "Diagnose this Chromatic build or workflow issue.",
+      "Trace this Chromatic build's baseline ancestry.",
       "Configure Chromatic for this CI or monorepo setup.",
-      "Troubleshoot this Chromatic visual diff."
+      "Troubleshoot this Chromatic visual diff.",
+      "Audit this Storybook\u2019s TurboSnap dependency exposure.",
+      "Check my changes for TurboSnap risks before pushing."
     ],
     "brandColor": "#FC521F",
     "composerIcon": "./assets/icon-large.png",

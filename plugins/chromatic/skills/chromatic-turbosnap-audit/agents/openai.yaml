@@ -1,0 +1,7 @@
+interface:
+  display_name: "Audit TurboSnap Dependencies"
+  short_description: "Audit preview imports and global dependency exposure"
+  default_prompt: "Use $chromatic-turbosnap-audit to audit this Storybook’s preview imports and dependency exposure without making changes."
+
+policy:
+  allow_implicit_invocation: true

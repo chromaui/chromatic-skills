@@ -1,0 +1,13 @@
+{
+  "name": "Global generated input changes outside Git",
+  "skills": ["chromatic-turbosnap-compare"],
+  "query": "V1 selected three stories. V2 reports preview changed. Why?",
+  "context": "Both manifests have the same raw preview hash, dependency edges, and attribution. Only generated/locales.json changes in the preview subtree. Preview imports it for a global provider. Git lists only Card.tsx. The two locale files themselves are unavailable.",
+  "expected_behavior": [
+    "Identifies generated/locales.json as the changed preview hash input",
+    "Explains Git seed tracing versus on-disk content hashing",
+    "Separates unchanged preview source from changed preview subtree",
+    "Does not claim the JSON values changed or generation is nondeterministic",
+    "Recommends comparing raw and parsed locale outputs before suppressing tracing"
+  ]
+}

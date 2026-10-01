@@ -1,0 +1,21 @@
+{
+  "storybookBaseDir": ".",
+  "storybookConfigDir": ".storybook",
+  "chromatic": [
+    "node",
+    "./node_modules/chromatic/dist/bin.cjs"
+  ],
+  "build": {
+    "cwd": ".",
+    "command": [
+      "yarn",
+      "build-storybook",
+      "--stats-json",
+      "--output-dir",
+      "{outputDir}"
+    ],
+    "timeoutMs": 600000
+  },
+  "statsFile": "{outputDir}/preview-stats.json",
+  "untraced": []
+}
