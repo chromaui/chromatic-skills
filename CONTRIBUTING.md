@@ -1,5 +1,7 @@
 # Contributing
 
+Agents working in this repository should read [AGENTS.md](AGENTS.md). For skill selection, evidence handoffs, and team adoption, see the [team workflow guide](docs/team-workflows.md).
+
 ## Principles
 
 - Each skill in `skills/` is the single source of truth for its workflow. Never edit the generated copies in `plugins/chromatic/skills/` directly.

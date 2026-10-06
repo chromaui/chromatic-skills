@@ -2,6 +2,10 @@
 
 Canonical Chromatic workflows for git and baseline debugging, TurboSnap investigations, Storybook and visual diff diagnosis, and monorepo configuration guidance. Built on the [Agent Skills](https://agentskills.io) open standard — works with Claude Code, Codex, and any compatible AI tool.
 
+Read the [team workflow guide](docs/team-workflows.md) to choose a skill, prepare evidence, understand installed copies, and adopt a shared process.
+
+Repository contributors using agents should follow [AGENTS.md](AGENTS.md); [CLAUDE.md](CLAUDE.md) delegates to the same instructions.
+
 ## Skills
 
 ### `chromatic-workflow-debug`
