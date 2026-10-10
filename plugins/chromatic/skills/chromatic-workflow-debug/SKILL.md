@@ -39,6 +39,8 @@ Prefer evidence already provided:
 - build URL and the expected comparison target
 - any manual overrides like `branchName`, `repositorySlug`, `patchBuild`, or `ignoreLastBuildOnBranch`
 
+For repeated approvals, first identify UI Tests versus UI Review. For overlapping builds, collect the upstream acceptance time and first affected intermediate build. Follow the timing checks in `reference/workflow-playbook.md` before proposing a reset or rerun.
+
 Do not ask for a broad dump if the current evidence already points to one branch of the decision tree.
 
 ### 2) Classify before proposing changes

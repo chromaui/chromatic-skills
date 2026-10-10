@@ -1,6 +1,6 @@
 ---
 name: diagnose-chromatic-baselines
-description: Diagnose Chromatic visual-test baseline ancestry with customer-owned evidence. Use when an accepted change reappears, a PR acceptance seems not to carry to the target branch, a build uses an unexpected baseline, or rebuilds and branches disagree. Work from Chromatic build links, test or story IDs, CI debug logs, Git history, GitHub pull requests, and optional customer-scoped Public API access. Do not use internal Chromatic APIs, employee credentials, production configuration, or private observability.
+description: Diagnose Chromatic visual-test baseline ancestry with customer-owned evidence. Use when accepted changes reappear across branches, stacked PRs, merge queues, or overlapping builds, or when rebuilds use unexpected baselines. Work from build records, CLI logs, Git history, and optional customer-scoped Public API access. Do not use internal Chromatic APIs, employee credentials, production configuration, or private observability.
 metadata:
   short-description: Trace baseline ancestry with customer-owned evidence
 ---
@@ -21,6 +21,10 @@ Find the first build where the expected baseline stopped carrying forward. Separ
 
 ## Collect the minimum evidence
 
+First distinguish UI Test acceptance from UI Review sign-off. For stacks, merge queues, overlapping builds, or approval timing, read [reference/concurrent-builds.md](reference/concurrent-builds.md). Start with the provided evidence and ask for one missing artifact at a time.
+
+If an accepted UI Test still appears in the PR's expected UI Review changeset, explain that distinction and stop. Do not collect an ancestry bundle when the evidence already answers the question.
+
 Obtain:
 
 1. The affected story ID and mode.
@@ -29,6 +33,8 @@ Obtain:
 4. The PR number, merge strategy, accepted PR commit, and target-branch commit.
 5. CLI debug logs for the accepted build and first affected target-branch build.
 6. A later rebuild only when it helps locate the first build on the same commit.
+
+For concurrency cases, add upstream readiness, acceptance time, and intermediate builds to the timeline. Do not treat a build's current accepted status as proof of its state when a descendant selected a baseline.
 
 Read [reference/collect-evidence.md](reference/collect-evidence.md) for customer-safe collection methods. Do not block on optional API access when build pages and logs provide enough evidence.
 
@@ -110,6 +116,8 @@ Start with one sentence that states the strongest confirmed conclusion. Then inc
 5. The confirmed failure boundary or the single unresolved question.
 6. One customer action and one action for Chromatic Support.
 
+For concurrency cases, include the event timeline and verify the affected story and mode after recovery. Keep requests for new product behavior separate from supported remediation.
+
 Use [reference/support-handoff.md](reference/support-handoff.md) when the remaining question requires Chromatic-only data.
 
 Use precise labels:
@@ -124,7 +132,9 @@ Stop when the evidence reaches the external access boundary. Do not replace miss
 
 - `reference/collect-evidence.md`
 - `reference/baseline-model.md`
+- `reference/concurrent-builds.md`
 - `reference/support-handoff.md`
 - `template.md`
 - `examples/customer-baseline-handoff.md`
+- `examples/stacked-pr-timeline.md`
 - `evaluations/README.md`

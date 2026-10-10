@@ -12,6 +12,8 @@ Diagnose Chromatic workflow issues involving git history, baselines, pull reques
 
 Trace why an accepted visual change did not carry forward using customer-owned build records, CLI logs, and Git history. The workflow separates confirmed ancestry evidence from questions that require Chromatic Support.
 
+For stacked PRs, merge queues, and overlapping builds, use the [baselines and concurrent-build playbook](skills/diagnose-chromatic-baselines/reference/concurrent-builds.md). It includes a timeline, recovery decision table, and a sanitized example.
+
 ### `chromatic-turbosnap-debug`
 
 Diagnose TurboSnap behavior using logs, config, git context, hosted metadata references, and targeted trace commands. Use when TurboSnap is enabled but triggering full rebuilds, tracing too broadly, or skipping stories unexpectedly.
