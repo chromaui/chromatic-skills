@@ -20,3 +20,7 @@ Please run this command and paste the output:
 ```bash
 git merge-base <head-branch> <base-branch>
 ```
+
+## Repeated approval request
+
+Start with the comparison surface (UI Tests or UI Review), story, and mode. If these are known, request the first affected build's test record. For concurrent builds, add the upstream acceptance time when available. Ask for one missing artifact at a time.

@@ -1,0 +1,16 @@
+{
+  "name": "Git ancestry exists but upstream readiness is uncertain",
+  "skills": ["diagnose-chromatic-baselines"],
+  "query": "The queue build contains the approved PR commit, so why did it use an older button?",
+  "context": "Fictional records: the PR build started at 10:00 UTC, the queue build started at 10:01, and the PR build completed at 10:04 and was accepted at 10:06. git merge-base --is-ancestor for the PR commit and queue commit exits 0. The CLI submitted the PR commit. The queue comparison uses an older button baseline. Exact upstream test availability and queue selection timestamps are not visible.",
+  "expected_behavior": [
+    "Distinguishes Git ancestry from build eligibility and test acceptance timing",
+    "Treats timing as a supported hypothesis rather than a confirmed internal selection cause",
+    "Requests one targeted record or Support trace to establish eligibility at selection"
+  ],
+  "success_criteria": [
+    "Does not infer that every in-progress build is categorically ineligible",
+    "Does not invent the exact comparison-selection time from the queue start time",
+    "Does not promise re-enqueueing or rerunning will remove every diff"
+  ]
+}

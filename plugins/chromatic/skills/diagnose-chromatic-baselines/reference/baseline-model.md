@@ -6,6 +6,8 @@ Accepting a visual change records a decision for a specific test and snapshot. A
 
 Baseline selection varies by story, mode, branch ancestry, and accepted history. Do not describe a project as having one global last-known-good commit.
 
+UI Review sign-off is separate from UI Test acceptance. UI Review compares the PR head with its merge-base build; accepted UI Test changes can remain part of that changeset.
+
 The build page can summarize the accepted baseline. That label does not always prove the complete comparison chain. Use build records and CLI ancestry logs when exact provenance matters.
 
 ## Parent builds connect accepted changes to later builds
@@ -38,11 +40,13 @@ A squash or rebase creates target-branch commits that do not contain the origina
 
 Customer-visible evidence can show that the PR commit is absent. It usually cannot prove why provider linkage was absent. Possible causes remain hypotheses until Support verifies them.
 
-## Rebuilds preserve the first decision on a commit
+## Rebuilds can retain earlier ancestry
 
 A rebuild on the same commit can inherit the earlier build's ancestry choice. A later rebuild does not prove that Chromatic recalculated every relationship.
 
 Always locate the first build on the affected commit.
+
+For overlapping builds, stacked PRs, merge queues, and the difference between a dashboard rerun and a CI rebuild, use [the concurrent-build playbook](concurrent-builds.md). It includes the timeline, recovery choices, and verification criteria.
 
 ## Evidence boundary
 

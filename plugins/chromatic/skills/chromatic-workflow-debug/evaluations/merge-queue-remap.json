@@ -1,15 +1,16 @@
 {
-  "name": "Merge queue branch name hides the real PR branch",
+  "name": "A normal merge queue branch is not a remapping defect",
   "skills": ["chromatic-workflow-debug"],
   "query": "Our merge queue run seems to compare against the wrong branch.",
   "context": "The branch name matches a GitHub merge queue pattern and the customer expects Chromatic to reason about the original pull request branch instead.",
   "expected_behavior": [
-    "Chooses `WF_MERGE_QUEUE_BRANCH_REMAP` or explains that branch remapping is the decisive factor",
-    "Explains merge queue branch naming in public-safe language",
-    "Requests at most one confirming artifact if needed"
+    "Uses `WF_NEEDS_MORE_EVIDENCE` because a queue branch name alone does not prove a defect",
+    "Explains that a merge-group build validates the combined queue commit and automatic queue identity detection is supported",
+    "Requests the merge-group checkout and identity evidence as one targeted artifact"
   ],
   "success_criteria": [
     "The response does not misclassify the issue as a generic shallow-history problem",
-    "The response explains the branch-name translation clearly"
+    "Does not recommend replacing the queue commit with the original PR head",
+    "Does not claim all merge queues require manual branch remapping"
   ]
 }
