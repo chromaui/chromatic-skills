@@ -11,5 +11,6 @@ Installed skills should explain the issue directly and only point a human toward
 | `WF_NO_ANCESTOR_BUILD` | Branching and baseline behavior |
 | `WF_REPLACEMENT_BUILD` | Replacement builds and historic commits |
 | `WF_MERGE_QUEUE_BRANCH_REMAP` | Merge queue behavior |
+| `WF_BASELINE_ACCEPTANCE_TIMING` | Concurrent builds and acceptance timing; see the timing checks in `reference/workflow-playbook.md` |
 | `WF_MERGE_BASE_NOT_FOUND` | Merge-base calculation and patch builds |
 | `WF_PATCH_BUILD_REQUIRED` | Patch builds |

@@ -1,0 +1,16 @@
+{
+  "name": "A stacked PR comparison is older than its upstream acceptance",
+  "skills": ["chromatic-workflow-debug"],
+  "query": "Our stacked PR keeps showing a change accepted in its parent PR. Should we add ignoreLastBuildOnBranch?",
+  "context": "No rebase or force-push occurred. Git history is complete. For the same story and mode, the intermediate build completed with an old baseline at 09:08 UTC; the upstream change was accepted at 09:10. The downstream build completed at 09:15 with that old baseline. The issue appears in UI Tests. Exact candidate selection is unavailable.",
+  "expected_behavior": [
+    "Chooses `WF_BASELINE_ACCEPTANCE_TIMING` and uses the timestamps as evidence",
+    "Describes the intermediate comparison as predating acceptance and its downstream inheritance as an inference",
+    "Gives one next step to verify the affected test chain"
+  ],
+  "success_criteria": [
+    "Does not recommend ignoreLastBuildOnBranch for an ordinary ancestor still in Git history",
+    "Does not require a separately installed baseline skill or fetch remote instructions",
+    "Returns the workflow diagnosis card with a truthful confidence level"
+  ]
+}

@@ -23,6 +23,8 @@ State one sentence supported by the evidence.
 - First affected commit:
 - Observed test state:
 
+For a stack, merge queue, or concurrent build, attach the timeline from [the concurrent-build playbook](concurrent-builds.md). Include acceptance and readiness times where known; preserve `unknown` for unavailable selection times. State whether the symptom is in UI Tests or UI Review.
+
 ## Ancestry evidence
 
 - Merge strategy:
@@ -50,6 +52,7 @@ Ask one question that crosses the customer access boundary. Examples:
 - Did the provider map this merge commit to the expected PR build?
 - What lookup configuration applied to this build?
 - The expected parent was submitted. Which eligible baseline did the server select, and why?
+- Was the expected upstream build eligible when the descendant established its ancestry, and was the affected test accepted when its comparison was selected?
 - Did the server receive the same parent commits shown in the CLI log?
 
 ## Requested outcome

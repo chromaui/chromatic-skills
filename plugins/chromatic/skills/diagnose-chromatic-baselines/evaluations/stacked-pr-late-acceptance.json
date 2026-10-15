@@ -1,0 +1,18 @@
+{
+  "name": "An intermediate comparison predates upstream acceptance",
+  "skills": ["diagnose-chromatic-baselines"],
+  "query": "We accepted the button in the first PR. Why does the third PR in our stack still ask for it? Can we rerun until it passes?",
+  "context": "Fictional customer-owned records, all times UTC: main build M has an accepted green button. Stack: main → feature-a → feature-b → feature-c. A completed at 09:05 with an unaccepted blue button. B completed at 09:08; its button--primary, desktop-light test shows M as baseline and remains unaccepted. A was accepted at 09:10. C completed at 09:15 and shows M as the baseline for the same test. The evidence does not expose C's exact candidate-selection trace. This is UI Tests, not UI Review.",
+  "expected_behavior": [
+    "Produces a timeline preserving the order B comparison, A acceptance, C comparison",
+    "Confirms B predates A acceptance and labels inheritance through B as inferred unless exact test ancestry proves it",
+    "Explains that present-day acceptance does not prove an earlier comparison used that acceptance",
+    "Selects one next step that resolves the missing baseline-selection evidence"
+  ],
+  "success_criteria": [
+    "Does not promise dashboard reruns, forceRebuild, or empty commits reset ancestry",
+    "Does not blindly batch-accept changes or request internal credentials",
+    "Separates a supported review action from a request to rewrite existing comparisons",
+    "Checks the same story and mode when describing how recovery will be verified"
+  ]
+}

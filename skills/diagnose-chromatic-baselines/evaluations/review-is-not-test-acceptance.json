@@ -1,0 +1,15 @@
+{
+  "name": "UI Review still shows an accepted change",
+  "skills": ["diagnose-chromatic-baselines"],
+  "query": "UI Tests passed after I accepted the new button, but UI Review still shows it. Did Chromatic lose our approval?",
+  "context": "The PR changes button--primary in desktop-light from green to blue. The latest UI Test is accepted. UI Review compares this PR head to the unchanged green snapshot at the merge base. The UI Review comparison is the only reported repeated change.",
+  "expected_behavior": [
+    "Explains that the PR still changes the UI relative to its merge base",
+    "Separates UI Test acceptance from UI Review sign-off",
+    "States that the supplied facts do not demonstrate lost acceptance"
+  ],
+  "success_criteria": [
+    "Does not investigate server ancestry or request more artifacts unnecessarily",
+    "Does not recommend reruns, baseline resets, or auto-accept to erase the changeset"
+  ]
+}
