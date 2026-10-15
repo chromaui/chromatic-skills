@@ -1,0 +1,20 @@
+{
+  "name": "Unknown capture origin and quarantine across modes",
+  "skills": ["chromatic-story-reliability"],
+  "query": "For project P, story button--loading, mode desktop, Firefox, were the last three completed main builds fresh captures? Check current quarantine too. Read-only.",
+  "context": "All three builds are on main and completed. Build 103 commit c103 status PASSED has matching test t103, URL https://example.test/t103, result EQUAL, ignoreReason null, isUnstable false; Firefox comparison EQUAL, capture h103 SUCCESS. Build 102 commit c102 status SKIPPED has testCount 0 and no matching test. Build 101 commit c101 status PASSED has matching test t101, URL https://example.test/t101, result EQUAL, ignoreReason null, isUnstable false; Firefox comparison EQUAL, capture h101 SUCCESS. Deployed schema discovery exposes identity/result/image fields but no documented origin/reuse information and no DOM or trace fields. Quarantine page 1: button--loading, mobile, quarantinedAt 2026-09-01, hasNextPage true, endCursor q1. Page 2: button--loading, desktop, quarantinedAt 2026-10-01, latestTest t90 status IGNORED, ignoreReason UNSTABLE, isUnstable true, hasNextPage false. latestTest means the latest test where quarantine applied. No image pixels have been retrieved; only image URLs are available.",
+  "expected_behavior": [
+    "Classifies capture freshness for t103 and t101 as unknown and cites the missing provenance",
+    "Reports build 102 separately as skipped with no browser-result row",
+    "Matches desktop on the second quarantine page and reports its date",
+    "Separates ignored t90 from the three-build history and qualifies latestTest",
+    "Leaves image access unverified and requests at most one user-supplied image if it is needed",
+    "Does not fetch hosted URLs, claim unsupported DOM or trace access, or mutate state"
+  ],
+  "success_criteria": [
+    "Does not call equal or successful results fresh without origin evidence",
+    "Does not conclude all three builds were skipped",
+    "Does not confuse the mobile quarantine record or t90 with the latest desktop test",
+    "Distinguishes supplied evidence from live queries or images actually verified"
+  ]
+}
