@@ -42,7 +42,7 @@ Recommend and audit Chromatic configurations in Nx and Turborepo monorepos, incl
 
 ### `chromatic-story-reliability`
 
-Investigate one story's capture history, quarantine, and timing with read-only Chromatic evidence, then verify a focused story or component fix. Includes a [human guide](skills/chromatic-story-reliability/reference/workflow.md) and a controlled iframe fixture example. Distinguishes fresh captures from skipped, copied, or unknown results without treating a green build as proof.
+Investigate unreliable Chromatic and Storybook tests, from variable inputs and async readiness to shared state, environment differences, and component defects. Includes a [human guide](skills/chromatic-story-reliability/reference/workflow.md) and an optional iframe fixture example. Chooses evidence and validation for the failure mechanism, using available Chromatic MCP tools for remote data without requiring a particular plugin or browser.
 
 ### `chromatic-setup-ci`
 

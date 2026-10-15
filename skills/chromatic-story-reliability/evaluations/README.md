@@ -4,5 +4,7 @@ These offline scenarios exercise the evidence boundaries and fixture proposal. G
 
 - `capture-provenance-and-quarantine.json`: equal comparisons with unknown origin, a skipped build without tests, exact-mode matching across two quarantine pages, and image access that has not been verified.
 - `non-connecting-fixture.json`: distinguish a timeout callback from parent-owned UI, propose a script-free fixture, and assert the real error callback without changing production timing.
+- `shared-state-between-stories.json`: diagnose an order-dependent failure using local evidence without requiring a remote connection, another browser, or a production behavior change.
+- `variable-story-inputs.json`: stabilize a changing story input through an existing component seam and distinguish a direct MCP connection from plugin installation.
 
-These scenarios validate reasoning. They do not replace running a changed story in the relevant browsers or checking a pushed commit's Chromatic results.
+Browser names and timer values in scenarios are case data, not requirements of the skill. These scenarios validate reasoning. They do not replace executing the relevant tests or checking remote results when applicable.

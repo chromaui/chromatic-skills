@@ -1,4 +1,4 @@
 interface:
   display_name: "Chromatic Story Reliability"
-  short_description: "Investigate captures and verify focused story fixes"
-  default_prompt: "Use $chromatic-story-reliability to investigate this story and verify a focused fix without changing review or quarantine state."
+  short_description: "Diagnose unreliable tests and verify focused fixes"
+  default_prompt: "Use $chromatic-story-reliability to investigate this unreliable test and verify a focused fix without changing review or quarantine state."

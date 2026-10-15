@@ -4,13 +4,13 @@ Start with what you already know. This form is optional; accept natural-language
 
 ```text
 Project ID or build URL: <value>
-Story ID: <exact story ID>
-Mode: <name or unknown>
-Browser: <name and version if known>
-Branch: <branch or unknown>
-Historical build: <number or URL, if relevant>
-Recent build sample: <size, or start with seven>
+Story/test: <exact ID or local test path>
+Expected behavior: <intended outcome>
 Observed problem: <what changed or failed>
+Frequency and conditions: <repeatable, intermittent, order-dependent, or unknown>
+Relevant environment: <mode, viewport, browser, build mode, or other known difference>
+Branch/build: <value, if relevant>
+History sample: <bounded scope, if needed>
 Story/component source: <local paths or relevant pasted code>
 Available image evidence: <attachment or local path, if any>
 Requested scope: <investigate, propose a fix, or implement and test>
@@ -18,8 +18,8 @@ Requested scope: <investigate, propose a fix, or implement and test>
 
 ## Read-only investigation
 
-> Use `$chromatic-story-reliability` to investigate the story described above with my connected Chromatic tools. Search the deployed schema before selecting fields. Match the exact story, mode, and browser. Separate capture freshness, current quarantine, and historical ignores. Report which capabilities actually worked and which evidence remains unavailable. Do not read tokens, change reviews or quarantine, upload, or start a build. Ask for one missing artifact at a time.
+> Use `$chromatic-story-reliability` to investigate the test described above. Start with local evidence and use my connected Chromatic MCP tools when remote evidence is needed, whether supplied by a plugin or connected directly. Search the deployed schema before composing queries. Choose checks that distinguish the likely causes; do not require unrelated image, history, quarantine, or browser checks. Report what actually ran and what remains uncertain. Do not read tokens, change reviews or quarantine, upload, or start a build. Ask for one missing artifact at a time.
 
 ## Implement an evidence-backed fix
 
-> Use `$chromatic-story-reliability` to implement the proposed fix in this checkout. Preserve the component's intended behavior and existing capture settings. Run the focused interaction in the normal and affected browsers, plus the repository's required checks. Separate local verification from remote capture verification. Do not publish or change review/quarantine state.
+> Use `$chromatic-story-reliability` to implement the evidence-backed fix in this checkout. Preserve the component's intended behavior and existing capture settings. Choose validation that exercises the failure mechanism, confirm the assertion still detects the regression, and run the repository's required checks. Separate local verification from any remote capture verification. Do not publish or change review/quarantine state.

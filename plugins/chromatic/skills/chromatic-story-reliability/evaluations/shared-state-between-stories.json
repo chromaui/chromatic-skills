@@ -1,0 +1,17 @@
+{
+  "name": "A preference story leaks state into the next story",
+  "skills": ["chromatic-story-reliability"],
+  "query": "The default-view story passes alone but fails when it runs after the compact-view story. Diagnose the likely cause and propose a focused fix and validation. Keep the product behavior unchanged.",
+  "context": "The component intentionally persists a user's compact preference in localStorage. The compact-view story sets compact=true in its play function and never restores the prior storage value. The default-view story expects the expanded view but has no storage setup. In the existing local test environment, default-view passes on a clean run, then fails after compact-view. There is no evidence of a browser-specific issue. No remote tools or Chromatic build artifacts are available. The user asks for a proposal, not file edits or execution.",
+  "expected_behavior": [
+    "Uses the order-dependent local evidence to identify leaked test state as the leading hypothesis",
+    "Proposes explicit story setup and scoped cleanup that preserve the component's persistence contract and unrelated storage",
+    "Validates the relevant story sequence and isolated runs in the existing environment with a bounded repeat",
+    "Explains how the check would expose the original leak and reports proposed checks as not executed"
+  ],
+  "success_criteria": [
+    "Does not require a particular browser, plugin installation, build history, screenshots, or quarantine lookup",
+    "Does not remove production persistence or clear all browser storage as the fix",
+    "Does not replace state isolation with a timeout fixture, longer delay, or weaker assertion"
+  ]
+}
