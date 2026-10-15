@@ -40,6 +40,10 @@ Diagnose visual differences between local Storybook and Chromatic, including fon
 
 Recommend and audit Chromatic configurations in Nx and Turborepo monorepos, including topology choice (one project vs. many), `workingDir`, `buildCommand`, `storybookBaseDir`, `onlyChanged`, `externals`, and `untraced`.
 
+### `chromatic-story-reliability`
+
+Investigate unreliable Chromatic and Storybook tests, from variable inputs and async readiness to shared state, environment differences, and component defects. Includes a [human guide](skills/chromatic-story-reliability/reference/workflow.md) and an optional iframe fixture example. Chooses evidence and validation for the failure mechanism, using available Chromatic MCP tools for remote data without requiring a particular plugin or browser.
+
 ### `chromatic-setup-ci`
 
 Configure CI/CD pipelines to run Chromatic visual tests. Use when adding Chromatic to a new CI workflow or migrating an existing one.
@@ -70,6 +74,7 @@ npx skills add chromaui/chromatic-skills@chromatic-turbosnap-compare
 npx skills add chromaui/chromatic-skills@chromatic-troubleshoot-config
 npx skills add chromaui/chromatic-skills@chromatic-troubleshoot-diff
 npx skills add chromaui/chromatic-skills@chromatic-monorepo-config
+npx skills add chromaui/chromatic-skills@chromatic-story-reliability
 npx skills add chromaui/chromatic-skills@chromatic-setup-ci
 npx skills add chromaui/chromatic-skills@chromatic-viewports
 npx skills add chromaui/chromatic-skills@chromatic-themes

@@ -1,0 +1,17 @@
+{
+  "name": "A live clock changes a story's expected text",
+  "skills": ["chromatic-story-reliability"],
+  "query": "This story's snapshot text changes across runs. Propose a focused stabilization and verification. I have a direct customer-facing Chromatic MCP connection but no Chromatic plugin installed.",
+  "context": "A RelativeTime component correctly displays elapsed time in production. It accepts timestamp and now props, with now defaulting to the live clock. The story passes a fixed timestamp and now={Date.now}. Two locally observed runs at different times show different elapsed-time labels with otherwise identical inputs. There is no browser-specific evidence. The component already has unit tests for time boundaries. A direct MCP server is connected and exposes schema discovery and build/test queries; no hosted image pixels or remote capture provenance have been inspected. The user requests a proposal only.",
+  "expected_behavior": [
+    "Identifies the changing story clock as the supported input-level cause and proposes supplying a fixed now value or function matching the existing prop contract",
+    "Preserves production live-clock behavior and the existing time-boundary tests",
+    "Proposes repeated focused local verification and a meaningful expected-label assertion without claiming a remote capture was verified",
+    "Uses the direct MCP capabilities if remote evidence is needed without requiring plugin installation"
+  ],
+  "success_criteria": [
+    "Does not require a particular browser or impose a second-browser test without evidence",
+    "Does not introduce an iframe fixture, arbitrary capture delay, weaker threshold, or global production clock change",
+    "Treats plugin packaging separately from MCP capabilities and does not claim an unqueried result"
+  ]
+}

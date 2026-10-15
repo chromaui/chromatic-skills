@@ -1,0 +1,19 @@
+{
+  "name": "A timeout callback is not an error panel",
+  "skills": ["chromatic-story-reliability"],
+  "query": "Explain this timeout and propose a story-only fixture and assertion. Preserve the component. Do not increase capture delay or loosen visual thresholds.",
+  "context": "The component schedules a check 10000ms after mount. The check returns if unmounted or current props.connected is true; otherwise it calls onConnectionError(true). A connection message calls onConnectionError(false) and onConnected(). render returns iframe(src). The story pins connected=false, supplies logging callbacks, and uses a nonexistent URL. The parent turns the error callback into a visible error panel. The outer interaction deadline is 15 seconds. Historical Firefox images contain changed glyph-edge pixels, but there is no causal evidence linking those pixels to the timeout.",
+  "expected_behavior": [
+    "Explains the scheduling event, current-prop check, callback, and absence of a component-owned DOM change",
+    "Proposes a served script-free HTML fixture that sends no connection message",
+    "Passes explicit spies through story args and awaits onConnectionError(true)",
+    "Asserts that onConnected and onConnectionError(false) have not occurred before play completes",
+    "Keeps the component timer and capture settings unchanged and fits the assertion into the outer budget",
+    "Distinguishes a callback-only story from a parent or stateful harness that renders an error panel"
+  ],
+  "success_criteria": [
+    "Does not claim the timeout changes iframe contents or explains Firefox rasterization",
+    "Does not replace the callback assertion with a fixed sleep or synthetic callback call",
+    "Reports the proposed fixture and browser behavior as unverified until tests actually run"
+  ]
+}
