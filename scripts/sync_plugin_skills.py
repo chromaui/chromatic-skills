@@ -22,6 +22,7 @@ PLUGIN_SKILLS_ROOT = REPOSITORY_ROOT / "plugins" / "chromatic" / "skills"
 PUBLIC_SKILLS = (
     "chromatic-monorepo-config",
     "chromatic-setup-ci",
+    "chromatic-story-lab",
     "chromatic-themes",
     "chromatic-troubleshoot-config",
     "chromatic-troubleshoot-diff",

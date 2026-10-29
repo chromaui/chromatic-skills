@@ -1,0 +1,12 @@
+{
+  "name": "wrong-app",
+  "skills": ["chromatic-story-lab"],
+  "query": "Build the notes Storybook from this lab's npm workspace root. The shared UI package changed. Give the target command and explain which stories cover it.",
+  "expected_behavior": [
+    "Use npm run build-storybook --workspace=@story-lab/notes from the lab root",
+    "Identify apps/notes/.storybook and apps/notes/storybook-static",
+    "Include the imported packages/ui component and CSS in coverage",
+    "Avoid invented Nx or Turborepo tasks and broad story globs",
+    "Do not use untraced to hide the shared package change"
+  ]
+}

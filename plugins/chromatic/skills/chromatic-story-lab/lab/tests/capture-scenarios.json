@@ -1,0 +1,23 @@
+[
+  {
+    "id": "timer",
+    "question": "The timestamp changes on each run. This note card must catch future visual regressions. You can inject a fixed time today. Choose fix, quarantine, or disable. For three full builds with two visual captures each, give the billed snapshot count and say whether diffs remain reviewed.",
+    "builds": 3,
+    "capturesPerBuild": 2,
+    "expected": { "action": "fix", "billedSnapshots": 6, "diffsReviewed": true }
+  },
+  {
+    "id": "temporary-flake",
+    "question": "A flake blocks work. The team explicitly accepts ignored diffs until the owner fixes it tomorrow. Captures must continue for diagnosis. Choose an action. For four full builds with three visual captures each, give the billed snapshot count and say whether diffs remain reviewed.",
+    "builds": 4,
+    "capturesPerBuild": 3,
+    "expected": { "action": "quarantine", "billedSnapshots": 12, "diffsReviewed": false }
+  },
+  {
+    "id": "retired-demo",
+    "question": "An obsolete demo has separate replacement coverage. The owner explicitly wants no future captures for the old demo. Choose an action. For five full builds with two potential visual captures each, give the billed snapshot count and say whether diffs remain reviewed.",
+    "builds": 5,
+    "capturesPerBuild": 2,
+    "expected": { "action": "disable", "billedSnapshots": 0, "diffsReviewed": false }
+  }
+]

@@ -36,6 +36,10 @@ Diagnose Storybook configuration issues that block Chromatic or local Storybook,
 
 Diagnose visual differences between local Storybook and Chromatic, including font and resource loading, viewport globals, nondeterministic data, animation timing, and fixed or sticky positioning.
 
+### `chromatic-story-lab`
+
+Practice reliable stories and async interactions in a [runnable synthetic lab](skills/chromatic-story-lab/lab/README.md). Compare live timers and remote inputs with fixed fixtures. Verify repeated local captures and deliberate regressions in one bounded React Storybook workspace.
+
 ### `chromatic-monorepo-config`
 
 Recommend and audit Chromatic configurations in Nx and Turborepo monorepos, including topology choice (one project vs. many), `workingDir`, `buildCommand`, `storybookBaseDir`, `onlyChanged`, `externals`, and `untraced`.
@@ -69,6 +73,7 @@ npx skills add chromaui/chromatic-skills@chromatic-turbosnap-check
 npx skills add chromaui/chromatic-skills@chromatic-turbosnap-compare
 npx skills add chromaui/chromatic-skills@chromatic-troubleshoot-config
 npx skills add chromaui/chromatic-skills@chromatic-troubleshoot-diff
+npx skills add chromaui/chromatic-skills@chromatic-story-lab
 npx skills add chromaui/chromatic-skills@chromatic-monorepo-config
 npx skills add chromaui/chromatic-skills@chromatic-setup-ci
 npx skills add chromaui/chromatic-skills@chromatic-viewports

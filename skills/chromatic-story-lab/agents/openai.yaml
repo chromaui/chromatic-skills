@@ -1,0 +1,7 @@
+interface:
+  display_name: "Reliable Story Lab"
+  short_description: "Practice deterministic stories and awaited interactions"
+  default_prompt: "Use $chromatic-story-lab to write and verify reliable stories with synthetic fixtures, explicit monorepo commands, repeated captures, and a deliberate regression."
+
+policy:
+  allow_implicit_invocation: true

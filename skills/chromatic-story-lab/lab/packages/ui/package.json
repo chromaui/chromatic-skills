@@ -1,0 +1,8 @@
+{
+  "name": "@story-lab/ui",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "exports": { ".": "./src/NoteCard.tsx" },
+  "peerDependencies": { "react": "19.0.0" }
+}

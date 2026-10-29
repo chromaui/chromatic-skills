@@ -1,0 +1,13 @@
+{
+  "name": "agent-story",
+  "skills": ["chromatic-story-lab"],
+  "query": "An agent wrote stories with Date.now and remote badges. Save sometimes finishes after play returns. Stabilize the synthetic example and keep loading, error, and retry coverage.",
+  "expected_behavior": [
+    "Inspect installed versions and app boundaries before editing",
+    "Replace uncontrolled inputs with explicit fixtures and reset them before each story",
+    "Await interactions and assertions and wait for observable UI results",
+    "Keep failure and pending states enabled",
+    "Require repeated local captures and an intentional regression failure",
+    "Distinguish local results from unexecuted cloud verification"
+  ]
+}
